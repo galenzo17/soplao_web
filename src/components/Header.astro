@@ -1,0 +1,62 @@
+---
+---
+<header class="bg-white shadow-sm fixed w-full top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <nav class="flex justify-between items-center h-16">
+      <div class="text-xl lg:text-2xl font-bold">
+        SO<span class="text-yellow-500">PLAO</span>.CL
+      </div>
+
+      <button 
+        id="menuButton"
+        class="lg:hidden p-2"
+        aria-label="Menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <div id="menuItems" class="hidden lg:flex lg:space-x-8 absolute lg:static top-16 left-0 w-full lg:w-auto bg-white lg:bg-transparent shadow-md lg:shadow-none">
+        <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 p-4 lg:p-0">
+          <a href="#" class="hover:text-yellow-500">INICIO</a>
+          <a href="#" class="text-yellow-500">SERVICIOS</a>
+          <a href="#" class="hover:text-yellow-500">EQUIPAMIENTO</a>
+          <a href="#" class="hover:text-yellow-500">LO QUE HACEMOS</a>
+          <a href="#" class="hover:text-yellow-500">CONTACTO</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="h-16"></div>
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const menuItems = document.getElementById('menuItems');
+
+  menuButton?.addEventListener('click', () => {
+    menuItems?.classList.toggle('hidden');
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      menuItems?.classList.remove('hidden');
+    } else {
+      menuItems?.classList.add('hidden');
+    }
+  });
+</script>
+
+<style>
+  @media (max-width: 1024px) {
+    #menuItems {
+      transition: all 0.3s ease;
+    }
+
+    #menuItems:not(.hidden) {
+      display: block;
+    }
+  }
+</style>

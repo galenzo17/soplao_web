@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  prices: {
+    label: string;
+    price: string;
+  }[];
+  image: string;
+  direction: 'left' | 'right';
+}
+
+const { title, description, prices, image, direction } = Astro.props;
+---
+
+<div 
+  class="w-full lg:w-1/2"
+  data-aos={direction === 'left' ? 'fade-right' : 'fade-left'}
+  data-aos-duration="1000"
+  data-aos-once="true"
+>
+  <div class="bg-white mb-4 lg:m-4 lg:rounded-lg lg:shadow-lg overflow-hidden">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-auto lg:h-64 object-cover"
+    />
+    <div class="p-4 lg:p-6">
+      <h3 class="text-xl lg:text-2xl font-bold text-center mb-2 lg:mb-4">{title}</h3>
+      <p class="text-sm lg:text-base text-gray-600 text-center mb-4 lg:mb-6">{description}</p>
+      
+      <div class="flex flex-col items-center space-y-1 lg:space-y-2">
+        {prices.map(item => (
+          <div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
+            <span class="font-medium text-right min-w-[100px]">{item.label}</span>
+            <span>:</span>
+            <span class="text-yellow-500 font-bold min-w-[80px] text-left">{item.price}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

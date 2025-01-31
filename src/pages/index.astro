@@ -1,16 +1,110 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import "../styles/global.css";
 
+const services = [
+  {
+    title: "Limpieza Profesional de Colchón",
+    description: "Limpieza, Desinfección y Sanitización Ultravioleta al 99,9%",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/CL12-e1594986853582-oslm48vljje2gevbxr5ean6p1493e2h9ml75lyg4s0.jpeg",
+    prices: [
+      { label: "1 Plaza", price: "$ 29.990" },
+      { label: "1.5 Plaza", price: "$ 29.990" },
+      { label: "2 Plazas", price: "$ 35.000" },
+      { label: "King", price: "$ 39.990" },
+      { label: "Super King", price: "$ 49.990" }
+    ],
+    direction: 'left'
+  },
+  {
+    title: "Limpieza Alfombras Muro a Muro",
+    description: "Limpieza, Desmanchado, Sanitización y Desinfección (Hasta 15m2 por Habitación)",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2019-09-11-at-00.31.35-1-odlfarv6oz5n682vdygbirvqtsfpufojh7wnfi5n3k.jpeg",
+    prices: [
+      { label: "1 Habitación", price: "$ 35.000" },
+      { label: "2 Habitaciones", price: "$ 55.000" },
+      { label: "3 Habitaciones", price: "$ 75.000" },
+      { label: "4 Habitaciones", price: "$ 95.000" }
+    ],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza Alfombra Decorativa",
+    description: "Varia según m2 ( Envianos las medidas y te enviamos el valor )",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/Captura-de-Pantalla-2019-09-14-a-las-00.37.55-odqmnxphtgrwy2csdl9c8nmjuae1u9iauo8h1p1cfk.png",
+    prices: [
+      { label: "Valor mínimo", price: "$ 32.990" }
+    ],
+    direction: 'left'
+  },
+  {
+    title: "Decapado Piso Flotante, Cerámico, Porcelanato o Piedra",
+    description: "Desde $ 4.990 m2 (mínimo 15m2) Valor varia según estado.",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/l1-odqmkn9twc9sb74tl62cihigzqlsweg4ee1aktwy7k.jpg",
+    prices: [
+      { label: "Valor por m2", price: "$ 4.990" }
+    ],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza de Sillones",
+    description: "Limpieza profesional y sanitización de sillones",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/image-2017-06-20-odq669t3de3e86onyh4yxyr18ehfc7pc8b5gdb9oa8.jpg",
+    prices: [
+      { label: "1 Cuerpo", price: "$ 35.000" },
+      { label: "2 Cuerpos", price: "$ 39.990" },
+      { label: "3 Cuerpos", price: "$ 45.000" },
+      { label: "4 Cuerpos", price: "$ 65.000" },
+      { label: "5 Cuerpos", price: "$ 75.000" }
+    ],
+    direction: 'left'
+  },
+  {
+    title: "Limpieza de Sillas",
+    description: "Limpieza y sanitización profesional de sillas",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/limpiezasillas-odq68wqsjnpcssurk46afssl8bhhxn689d1hu9cwts.jpg",
+    prices: [
+      { label: "Por silla", price: "Desde $ 9.990" }
+    ],
+    direction: 'right'
+  }
+] as const;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Cleanout.cl - Servicios de Limpieza Profesional">
+  <section class="bg-gray-100 w-full min-h-screen">
+    <div class="w-full mx-auto px-0 lg:px-4 max-w-7xl">
+      <h1 class="text-2xl lg:text-4xl font-bold text-center py-8 lg:py-12">
+        SERVICIOS
+      </h1>
+      <div class="flex flex-col lg:flex-row lg:flex-wrap">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+      <div class="px-4 py-6 lg:py-8 text-center text-gray-600 text-sm lg:text-base">
+        <p>
+          Aceptamos todo medio de pago, transferencia, efectivo, tarjetas de crédito y
+          débito. Puedes pagar en cuotas si tu banco tiene convenio, además te podemos
+          entregar una factura en caso de que tengas alguna empresa que te podamos
+          facturar. (Valores + IVA)
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 1024px) {
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+</style>
