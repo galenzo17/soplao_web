@@ -1,0 +1,163 @@
+---
+// src/pages/lo-que-hacemos.astro
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+const processes = [
+  {
+    title: 'Evaluación Inicial',
+    description:
+      'Realizamos una inspección detallada del espacio a limpiar para determinar el método más efectivo y los productos adecuados.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    </svg>`,
+  },
+  {
+    title: 'Planificación Personalizada',
+    description:
+      'Desarrollamos un plan de limpieza específico considerando las necesidades particulares de cada cliente y espacio.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    </svg>`,
+  },
+  {
+    title: 'Limpieza Profunda',
+    description:
+      'Utilizamos equipos profesionales y productos especializados para garantizar una limpieza profunda y efectiva.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>`,
+  },
+  {
+    title: 'Control de Calidad',
+    description:
+      'Realizamos una inspección final para asegurar que el servicio cumple con nuestros altos estándares de calidad.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>`,
+  },
+];
+
+const features = [
+  {
+    title: 'Personal Capacitado',
+    description:
+      'Nuestro equipo está altamente capacitado y en constante actualización sobre las últimas técnicas de limpieza.',
+  },
+  {
+    title: 'Productos Especializados',
+    description:
+      'Utilizamos productos profesionales y ecológicos que garantizan resultados excepcionales.',
+  },
+  {
+    title: 'Tecnología Avanzada',
+    description:
+      'Contamos con equipos de última generación para cada tipo de superficie y necesidad.',
+  },
+  {
+    title: 'Servicio Personalizado',
+    description:
+      'Adaptamos nuestros servicios a las necesidades específicas de cada cliente.',
+  },
+];
+---
+
+<Layout title="soplao.cl - Lo Que Hacemos">
+  <main class="bg-gray-100">
+    <!-- Hero Section -->
+    <section class="bg-white py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <h1
+          class="text-3xl lg:text-5xl font-bold text-center mb-6"
+          data-aos="fade-up"
+        >
+          NUESTRO PROCESO
+        </h1>
+        <p
+          class="text-gray-600 text-center max-w-3xl mx-auto mb-12 lg:text-lg"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          En SOPLAO nos dedicamos a brindar servicios de limpieza profesional
+          con los más altos estándares de calidad, utilizando tecnología de
+          punta y productos especializados para cada necesidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {
+            processes.map((process, index) => (
+              <div
+                class="bg-white rounded-lg shadow-md p-6 lg:p-8"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div class="text-brand mb-4" set:html={process.icon} />
+                <h3 class="text-xl lg:text-2xl font-semibold mb-4">
+                  {process.title}
+                </h3>
+                <p class="text-gray-600">{process.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-white py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-2xl lg:text-4xl font-bold text-center mb-12"
+          data-aos="fade-up"
+        >
+          ¿POR QUÉ ELEGIRNOS?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            features.map((feature, index) => (
+              <div
+                class="text-center"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <h3 class="text-xl font-semibold mb-4 text-brand">
+                  {feature.title}
+                </h3>
+                <p class="text-gray-600">{feature.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div
+          class="bg-brand text-white rounded-lg shadow-xl p-8 lg:p-12 text-center"
+          data-aos="fade-up"
+        >
+          <h2 class="text-2xl lg:text-3xl font-bold mb-4">
+            ¿Listo para transformar tus espacios?
+          </h2>
+          <p class="mb-8 lg:text-lg">
+            Contáctanos hoy mismo y descubre la diferencia de un servicio
+            profesional.
+          </p>
+          <a
+            href="/contacto"
+            class="inline-block bg-white text-brand font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          >
+            Solicitar Cotización
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
