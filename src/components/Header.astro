@@ -21,8 +21,8 @@ const navLinks = [
 <header class="bg-white shadow-sm fixed w-full top-0 z-50">
   <div class="max-w-7xl mx-auto px-4">
     <nav class="flex justify-between items-center h-16">
-      <div class="text-xl lg:text-2xl font-bold">
-        SO<span class="text-yellow-500">PLAO</span>.CL
+      <div class="logo">
+        SO<span class="logo-highlight">PLAO</span>.CL
       </div>
 
       <button id="menuButton" class="lg:hidden p-2" aria-label="Menu">
@@ -106,5 +106,132 @@ const navLinks = [
     #menuItems:not(.hidden) {
       display: block;
     }
+  }
+  :root {
+    --color-primary: #0facaf;
+    --color-primary-light: #15d8dc;
+    --color-primary-dark: #0b8082;
+  }
+
+  .header {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;
+  }
+
+  .header-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    position: relative;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  @media (min-width: 1024px) {
+    .logo {
+      font-size: 1.5rem;
+    }
+  }
+
+  .logo-highlight {
+    color: var(--color-primary);
+  }
+
+  .menu-button {
+    display: block;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .menu-button {
+      display: none;
+    }
+  }
+
+  .logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-image {
+    height: 3.75rem;
+    width: auto;
+  }
+
+  .menu-items {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 1024px) {
+    .menu-items {
+      display: flex;
+      position: static;
+      width: auto;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  .menu-links {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .menu-links {
+      flex-direction: row;
+      padding: 0;
+      gap: 2rem;
+    }
+  }
+
+  .nav-link {
+    transition: color 0.2s;
+    padding: 0.5rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    .nav-link {
+      padding: 0;
+    }
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary-light);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+  }
+
+  .header-spacer {
+    height: 4rem;
+  }
+
+  #menuItems.show {
+    display: block;
   }
 </style>

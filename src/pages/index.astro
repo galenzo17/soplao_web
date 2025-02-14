@@ -5,67 +5,45 @@ import "../styles/global.css";
 
 const services = [
   {
-    title: "Limpieza Profesional de Colchón",
-    description: "Limpieza, Desinfección y Sanitización Ultravioleta al 99,9%",
-    image: "./images/CL12-e1594986853582-oslm48vljje2gevbxr5ean6p1493e2h9ml75lyg4s0.png",
-    prices: [
-      { label: "1 Plaza", price: "$ 29.990" },
-      { label: "1.5 Plaza", price: "$ 29.990" },
-      { label: "2 Plazas", price: "$ 35.000" },
-      { label: "King", price: "$ 39.990" },
-      { label: "Super King", price: "$ 49.990" }
-    ],
-    direction: 'left'
-  },
-  {
-    title: "Limpieza Alfombras Muro a Muro",
-    description: "Limpieza, Desmanchado, Sanitización y Desinfección (Hasta 15m2 por Habitación)",
-    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2019-09-11-at-00.31.35-1-odlfarv6oz5n682vdygbirvqtsfpufojh7wnfi5n3k.jpeg",
-    prices: [
-      { label: "1 Habitación", price: "$ 35.000" },
-      { label: "2 Habitaciones", price: "$ 55.000" },
-      { label: "3 Habitaciones", price: "$ 75.000" },
-      { label: "4 Habitaciones", price: "$ 95.000" }
-    ],
-    direction: 'right'
-  },
-  {
-    title: "Limpieza Alfombra Decorativa",
-    description: "Varia según m2 ( Envianos las medidas y te enviamos el valor )",
-    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/Captura-de-Pantalla-2019-09-14-a-las-00.37.55-odqmnxphtgrwy2csdl9c8nmjuae1u9iauo8h1p1cfk.png",
-    prices: [
-      { label: "Valor mínimo", price: "$ 32.990" }
-    ],
-    direction: 'left'
-  },
-  {
-    title: "Decapado Piso Flotante, Cerámico, Porcelanato o Piedra",
-    description: "Desde $ 4.990 m2 (mínimo 15m2) Valor varia según estado.",
+    title: "Limpieza Convencional/Mantenimiento",
+    description: "Limpieza general de espacios habitados, ideal para mantener tu hogar u oficina en óptimas condiciones.",
     image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/l1-odqmkn9twc9sb74tl62cihigzqlsweg4ee1aktwy7k.jpg",
     prices: [
-      { label: "Valor por m2", price: "$ 4.990" }
-    ],
-    direction: 'right'
-  },
-  {
-    title: "Limpieza de Sillones",
-    description: "Limpieza profesional y sanitización de sillones",
-    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/image-2017-06-20-odq669t3de3e86onyh4yxyr18ehfc7pc8b5gdb9oa8.jpg",
-    prices: [
-      { label: "1 Cuerpo", price: "$ 35.000" },
-      { label: "2 Cuerpos", price: "$ 39.990" },
-      { label: "3 Cuerpos", price: "$ 45.000" },
-      { label: "4 Cuerpos", price: "$ 65.000" },
-      { label: "5 Cuerpos", price: "$ 75.000" }
+      { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 62.000" },
+      { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 85.000" },
+      { label: "Desde 100m² en adelante", price: "$ 120.000" }
     ],
     direction: 'left'
   },
   {
-    title: "Limpieza de Sillas",
-    description: "Limpieza y sanitización profesional de sillas",
-    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/limpiezasillas-odq68wqsjnpcssurk46afssl8bhhxn689d1hu9cwts.jpg",
+    title: "Limpieza Profunda",
+    description: "Limpieza exhaustiva que incluye espacios de difícil acceso, ideal para reorganización o eventos especiales.",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/image-2017-06-20-odq669t3de3e86onyh4yxyr18ehfc7pc8b5gdb9oa8.jpg",
     prices: [
-      { label: "Por silla", price: "Desde $ 9.990" }
+      { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 80.000" },
+      { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 115.000" },
+      { label: "Desde 100m² en adelante", price: "$ 156.000" }
+    ],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza Fin de Arriendo",
+    description: "Servicio especializado para propiedades que serán entregadas a nuevos inquilinos. Incluye limpieza profunda de todas las áreas.",
+    image: "./images/limpieza-fin-alquiler-barcelona-baix-llobregat.jpg",
+    prices: [
+      { label: "Cotización Personalizada", price: "Solicitar Presupuesto" }
+    ],
+    direction: 'left'
+  },
+  {
+    title: "Servicios Adicionales",
+    description: "Servicios especializados que complementan nuestros servicios principales",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2019-09-11-at-00.31.35-1-odlfarv6oz5n682vdygbirvqtsfpufojh7wnfi5n3k.jpeg",
+    prices: [
+      { label: "Limpieza de Vidrios", price: "Según Metraje" },
+      { label: "Limpieza de Alfombras", price: "Según Metraje" },
+      { label: "Limpieza de Tapices", price: "Según Tamaño" },
+      { label: "Sanitización", price: "Cotizar" }
     ],
     direction: 'right'
   }
@@ -78,17 +56,62 @@ const services = [
       <h1 class="text-2xl lg:text-4xl font-bold text-center py-8 lg:py-12">
         SERVICIOS
       </h1>
+
       <div class="flex flex-col lg:flex-row lg:flex-wrap">
         {services.map((service) => (
           <ServiceCard {...service} />
         ))}
       </div>
+
+      <!-- Información de Pago -->
       <div class="px-4 py-6 lg:py-8 text-center text-gray-600 text-sm lg:text-base">
         <p>
           Aceptamos todo medio de pago, transferencia, efectivo, tarjetas de crédito y
           débito. Puedes pagar en cuotas si tu banco tiene convenio, además te podemos
           entregar una factura en caso de que tengas alguna empresa que te podamos
           facturar. (Valores + IVA)
+        </p>
+      </div>
+
+      <!-- Tabla Informativa -->
+      <div class="bg-white rounded-lg shadow-md p-6 mx-4 mb-12">
+        <h2 class="text-xl font-bold text-center mb-6">
+          Información para Cotizaciones
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-2 border">Metros cuadrados</th>
+                <th class="px-4 py-2 border">Máximo de habitaciones</th>
+                <th class="px-4 py-2 border">Convencional/Mantenimiento</th>
+                <th class="px-4 py-2 border">Profunda</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2 border">Hasta 50 m²</td>
+                <td class="px-4 py-2 border">2 dorm 2 baños</td>
+                <td class="px-4 py-2 border">$ 62.000</td>
+                <td class="px-4 py-2 border">$ 80.000</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Hasta 100 m²</td>
+                <td class="px-4 py-2 border">3 dorm y 2 baños</td>
+                <td class="px-4 py-2 border">$ 85.000</td>
+                <td class="px-4 py-2 border">$ 115.000</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Desde 100 m² en adelante</td>
+                <td class="px-4 py-2 border">-</td>
+                <td class="px-4 py-2 border">$ 120.000</td>
+                <td class="px-4 py-2 border">$ 156.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-gray-600 text-center">
+          (*) Logia y terraza va a depender del servicio que se requiera.
         </p>
       </div>
     </div>
