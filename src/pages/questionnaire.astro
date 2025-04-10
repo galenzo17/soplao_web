@@ -1,0 +1,282 @@
+<div class="questionnaire">
+    <form id="questionnaireForm" class="space-y-6">
+      <!-- Paso 1 -->
+      <div class="step" id="step1">
+        <h3 class="text-lg font-medium mb-4">Paso 1: Tipo de Espacio</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="spaceType" value="casa" class="form-radio text-brand" required>
+              <span>Casa</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="spaceType" value="departamento" class="form-radio text-brand">
+              <span>Departamento</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="spaceType" value="oficina" class="form-radio text-brand">
+              <span>Oficina</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="spaceType" value="local" class="form-radio text-brand">
+              <span>Local Comercial</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="spaceType" value="otro" class="form-radio text-brand">
+              <span>Otro</span>
+            </label>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button type="button" class="next-step w-full bg-brand text-white font-semibold py-2 px-4 rounded-md hover:bg-brand/90 transition-colors duration-200">
+            Siguiente
+          </button>
+        </div>
+      </div>
+  
+      <!-- Paso 2 -->
+      <div class="step hidden" id="step2">
+        <h3 class="text-lg font-medium mb-4">Paso 2: Tamaño del Espacio</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Metros Cuadrados Aproximados
+            </label>
+            <select name="squareMeters" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand" required>
+              <option value="">Selecciona una opción</option>
+              <option value="hasta50">Hasta 50 m²</option>
+              <option value="50-100">Entre 50 y 100 m²</option>
+              <option value="100-150">Entre 100 y 150 m²</option>
+              <option value="masde150">Más de 150 m²</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Número de Habitaciones
+            </label>
+            <select name="rooms" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand" required>
+              <option value="">Selecciona una opción</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5+">5 o más</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Número de Baños
+            </label>
+            <select name="bathrooms" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand" required>
+              <option value="">Selecciona una opción</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4 o más</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-6 flex justify-between">
+          <button type="button" class="prev-step bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-400 transition-colors duration-200">
+            Anterior
+          </button>
+          <button type="button" class="next-step bg-brand text-white font-semibold py-2 px-4 rounded-md hover:bg-brand/90 transition-colors duration-200">
+            Siguiente
+          </button>
+        </div>
+      </div>
+  
+      <!-- Paso 3 -->
+      <div class="step hidden" id="step3">
+        <h3 class="text-lg font-medium mb-4">Paso 3: Tipo de Limpieza</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="cleaningType" value="regular" class="form-radio text-brand" required>
+              <span>Limpieza Regular/Mantenimiento</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="cleaningType" value="deep" class="form-radio text-brand">
+              <span>Limpieza Profunda</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="cleaningType" value="endOfLease" class="form-radio text-brand">
+              <span>Limpieza Fin de Arriendo</span>
+            </label>
+          </div>
+          <div>
+            <label class="flex items-center space-x-3">
+              <input type="radio" name="cleaningType" value="specialized" class="form-radio text-brand">
+              <span>Limpieza Especializada (alfombras, colchones, etc.)</span>
+            </label>
+          </div>
+        </div>
+        <div class="mt-6 flex justify-between">
+          <button type="button" class="prev-step bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-400 transition-colors duration-200">
+            Anterior
+          </button>
+          <button type="button" class="next-step bg-brand text-white font-semibold py-2 px-4 rounded-md hover:bg-brand/90 transition-colors duration-200">
+            Siguiente
+          </button>
+        </div>
+      </div>
+  
+      <!-- Paso 4 -->
+      <div class="step hidden" id="step4">
+        <h3 class="text-lg font-medium mb-4">Paso 4: Tus Datos</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Nombre
+            </label>
+            <input type="text" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand" required>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Correo Electrónico
+            </label>
+            <input type="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand" required>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Teléfono
+            </label>
+            <input type="tel" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand" required>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              ¿Algo más que debamos saber?
+            </label>
+            <textarea name="additionalInfo" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"></textarea>
+          </div>
+        </div>
+        <div class="mt-6 flex justify-between">
+          <button type="button" class="prev-step bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-400 transition-colors duration-200">
+            Anterior
+          </button>
+          <button type="submit" class="bg-brand text-white font-semibold py-2 px-4 rounded-md hover:bg-brand/90 transition-colors duration-200">
+            Enviar Cuestionario
+          </button>
+        </div>
+      </div>
+    </form>
+    
+    <!-- Resultado -->
+    <div id="result" class="hidden">
+      <div class="bg-green-50 border border-green-200 rounded-md p-4 text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-500 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <h3 class="text-lg font-medium text-green-800 mb-2">¡Gracias por completar el cuestionario!</h3>
+        <p class="text-green-700">
+          Hemos recibido tu información y nos pondremos en contacto contigo a la brevedad para ofrecerte una cotización personalizada.
+        </p>
+        <button id="resetForm" class="mt-4 bg-white text-brand border border-brand font-semibold py-2 px-4 rounded-md hover:bg-gray-50 transition-colors duration-200">
+          Completar de nuevo
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('questionnaireForm');
+      const result = document.getElementById('result');
+      const steps = document.querySelectorAll('.step');
+      
+      // Botones de navegación
+      const nextButtons = document.querySelectorAll('.next-step');
+      const prevButtons = document.querySelectorAll('.prev-step');
+      const resetButton = document.getElementById('resetForm');
+      
+      let currentStep = 0;
+      
+      // Mostrar el paso actual
+      const showStep = (stepIndex) => {
+        steps.forEach((step, index) => {
+          if (index === stepIndex) {
+            step.classList.remove('hidden');
+          } else {
+            step.classList.add('hidden');
+          }
+        });
+      };
+      
+      // Evento para los botones "Siguiente"
+      nextButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          // Validación básica para el paso actual
+          const currentStepElement = steps[currentStep];
+          const inputs = currentStepElement.querySelectorAll('input[required], select[required]');
+          let isValid = true;
+          
+          inputs.forEach((input) => {
+            if (!input.value) {
+              isValid = false;
+              input.classList.add('border-red-500');
+            } else {
+              input.classList.remove('border-red-500');
+            }
+          });
+          
+          if (isValid) {
+            currentStep++;
+            showStep(currentStep);
+          }
+        });
+      });
+      
+      // Evento para los botones "Anterior"
+      prevButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          currentStep--;
+          showStep(currentStep);
+        });
+      });
+      
+      // Evento para el envío del formulario
+      form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        form.classList.add('hidden');
+        result?.classList.remove('hidden');
+        
+        // Aquí se podría añadir la lógica para enviar los datos al servidor
+        // const formData = new FormData(form);
+        // fetch('/api/questionnaire', {
+        //   method: 'POST',
+        //   body: formData
+        // });
+      });
+      
+      // Evento para reiniciar el formulario
+      resetButton?.addEventListener('click', () => {
+        form?.reset();
+        currentStep = 0;
+        showStep(currentStep);
+        form?.classList.remove('hidden');
+        result?.classList.add('hidden');
+      });
+    });
+  </script>
+  
+  <style>
+    
+  </style>

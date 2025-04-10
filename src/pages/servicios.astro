@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import "../styles/global.css";
+
+const services = [
+  {
+    title: "Limpieza Convencional/Mantenimiento",
+    description: "Limpieza general de espacios habitados, ideal para mantener tu hogar u oficina en óptimas condiciones.",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/l1-odqmkn9twc9sb74tl62cihigzqlsweg4ee1aktwy7k.jpg",
+    prices: [
+      { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 62.000" },
+      { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 85.000" },
+      { label: "Desde 100m² en adelante", price: "$ 120.000" }
+    ],
+    direction: 'left'
+  },
+  {
+    title: "Limpieza Profunda",
+    description: "Limpieza exhaustiva que incluye espacios de difícil acceso, ideal para reorganización o eventos especiales.",
+    image: "https://cleanout.cl/wp-content/uploads/elementor/thumbs/image-2017-06-20-odq669t3de3e86onyh4yxyr18ehfc7pc8b5gdb9oa8.jpg",
+    prices: [
+      { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 80.000" },
+      { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 115.000" },
+      { label: "Desde 100m² en adelante", price: "$ 156.000" }
+    ],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza Fin de Arriendo",
+    description: "Servicio especializado para propiedades que serán entregadas a nuevos inquilinos. Incluye limpieza profunda de todas las áreas.",
+    image: "./images/limpieza-fin-alquiler-barcelona-baix-llobregat.jpg",
+    prices: [
+      { label: "Cotización Personalizada", price: "Solicitar Presupuesto" }
+    ],
+    direction: 'left'
+  }
+] as const;
+
+const specializedServices = [
+  {
+    title: "Limpieza de Alfombras Muro a Muro",
+    description: "Limpieza profesional y profunda de alfombras instaladas.",
+    image: "/images/alfombra-muro-a-muro.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Metraje" }],
+    direction: 'left'
+  },
+  {
+    title: "Limpieza de Alfombra Decorativa",
+    description: "Limpieza especializada para alfombras decorativas sin secado.",
+    image: "/images/alfombra-decorativa.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza de Colchón",
+    description: "Eliminación de ácaros, manchas y olores de colchones.",
+    image: "/images/limpieza-colchon.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    direction: 'left'
+  },
+  {
+    title: "Decapado de Pisos",
+    description: "Restauración y limpieza profunda de pisos.",
+    image: "/images/decapado-pisos.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Metraje" }],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza de Tapices",
+    description: "Limpieza especializada para muebles tapizados y telas.",
+    image: "/images/limpieza-tapices.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    direction: 'left'
+  },
+  {
+    title: "Limpieza Industrial de Muros",
+    description: "Limpieza profunda para muros en entornos industriales y comerciales.",
+    image: "/images/limpieza-muros.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Área" }],
+    direction: 'right'
+  },
+  {
+    title: "Limpieza Industrial de Cocina",
+    description: "Limpieza especializada para cocinas industriales y comerciales.",
+    image: "/images/limpieza-cocina.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    direction: 'left'
+  },
+  {
+    title: "Limpieza Industrial de Baños",
+    description: "Desinfección y limpieza profunda para baños comerciales.",
+    image: "/images/limpieza-banos.jpg",
+    prices: [{ label: "Cotización Personalizada", price: "Según Cantidad" }],
+    direction: 'right'
+  }
+] as const;
+---
+
+<Layout title="soplao.cl - Nuestros Servicios">
+  <!-- Banner de Misión/Visión -->
+  <section class="bg-brand-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-2xl lg:text-3xl font-bold mb-6" data-aos="fade-up">NUESTRA MISIÓN</h2>
+      <p class="max-w-3xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="100">
+        En SOPLAO nos dedicamos a transformar espacios a través de la limpieza profesional, utilizando tecnología de punta y productos ecológicos. Nuestro compromiso es brindar un servicio excepcional que mejore la calidad de vida de nuestros clientes, cuidando tanto de su salud como del medio ambiente.
+      </p>
+    </div>
+  </section>
+
+  <!-- Servicios Principales -->
+  <section class="bg-gray-100 w-full py-12 lg:py-16">
+    <div class="w-full mx-auto px-0 lg:px-4 max-w-7xl">
+      <h2 class="text-2xl lg:text-4xl font-bold text-center mb-8 lg:mb-12">
+        SERVICIOS PRINCIPALES
+      </h2>
+
+      <div class="flex flex-col lg:flex-row lg:flex-wrap">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Servicios Especializados -->
+  <section class="bg-white w-full py-12 lg:py-16">
+    <div class="w-full mx-auto px-0 lg:px-4 max-w-7xl">
+      <h2 class="text-2xl lg:text-4xl font-bold text-center mb-8 lg:mb-12">
+        SERVICIOS ESPECIALIZADOS
+      </h2>
+
+      <div class="flex flex-col lg:flex-row lg:flex-wrap">
+        {specializedServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Información de Pago -->
+  <section class="bg-gray-100 py-8 lg:py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="px-4 py-6 lg:py-8 text-center text-gray-600 text-sm lg:text-base">
+        <p>
+          Aceptamos todo medio de pago, transferencia, efectivo, tarjetas de crédito y
+          débito. Puedes pagar en cuotas si tu banco tiene convenio, además te podemos
+          entregar una factura en caso de que tengas alguna empresa que te podamos
+          facturar. (Valores + IVA)
+        </p>
+      </div>
+
+      <!-- Tabla Informativa -->
+      <div class="bg-white rounded-lg shadow-md p-6 mx-4 mb-12">
+        <h2 class="text-xl font-bold text-center mb-6">
+          Información para Cotizaciones
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-2 border">Metros cuadrados</th>
+                <th class="px-4 py-2 border">Máximo de habitaciones</th>
+                <th class="px-4 py-2 border">Convencional/Mantenimiento</th>
+                <th class="px-4 py-2 border">Profunda</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2 border">Hasta 50 m²</td>
+                <td class="px-4 py-2 border">2 dorm 2 baños</td>
+                <td class="px-4 py-2 border">$ 62.000</td>
+                <td class="px-4 py-2 border">$ 80.000</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Hasta 100 m²</td>
+                <td class="px-4 py-2 border">3 dorm y 2 baños</td>
+                <td class="px-4 py-2 border">$ 85.000</td>
+                <td class="px-4 py-2 border">$ 115.000</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">Desde 100 m² en adelante</td>
+                <td class="px-4 py-2 border">-</td>
+                <td class="px-4 py-2 border">$ 120.000</td>
+                <td class="px-4 py-2 border">$ 156.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-gray-600 text-center">
+          (*) Logia y terraza va a depender del servicio que se requiera.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 1024px) {
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+</style>

@@ -2,6 +2,7 @@
 // src/pages/contacto.astro
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
+import Questionnaire from './questionnaire.astro';
 
 const socialLinks = [
   {
@@ -22,6 +23,21 @@ const socialLinks = [
     href: 'https://facebook.com/soplao',
     viewBox: '0 0 448 512',
   },
+];
+
+const services = [
+  "Limpieza Convencional/Mantenimiento",
+  "Limpieza Profunda",
+  "Limpieza Fin de Arriendo",
+  "Limpieza de Alfombras Muro a Muro",
+  "Limpieza de Alfombra Decorativa",
+  "Limpieza de Colchón",
+  "Decapado de Pisos",
+  "Limpieza de Tapices",
+  "Limpieza Industrial de Muros",
+  "Limpieza Industrial de Cocina",
+  "Limpieza Industrial de Baños",
+  "Otro (especificar)"
 ];
 ---
 
@@ -74,13 +90,65 @@ const socialLinks = [
               required
             />
           </div>
+          
+          <div>
+            <label
+              for="telefono"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            />
+          </div>
+          
+          <div>
+            <label
+              for="servicio"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Servicio a Cotizar
+            </label>
+            <select
+              id="servicio"
+              name="servicio"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            >
+              <option value="">Selecciona un servicio</option>
+              {services.map(service => (
+                <option value={service}>{service}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div>
+            <label
+              for="direccion"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Dirección donde se prestará el servicio
+            </label>
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            />
+          </div>
 
           <div>
             <label
               for="mensaje"
               class="block text-sm font-medium text-gray-700 mb-1"
             >
-              Mensaje
+              Detalles adicionales o requerimientos especiales
             </label>
             <textarea
               id="mensaje"
@@ -98,6 +166,18 @@ const socialLinks = [
           </button>
         </form>
       </div>
+      
+      <!-- Cuestionario -->
+      <div
+        class="bg-white rounded-lg shadow-md p-8 mb-12"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <h2 class="text-xl font-semibold mb-6 text-center">
+          ¿No estás seguro de qué necesitas? Completa nuestro cuestionario
+        </h2>
+        <Questionnaire />
+      </div>
 
       <!-- Separador -->
       <div class="text-center mb-8">
@@ -114,7 +194,7 @@ const socialLinks = [
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-600 hover:text-brand transition-colors duration-200"
+                class="text-gray-600  transition-colors duration-200"
                 title={social.name}
               >
                 <svg

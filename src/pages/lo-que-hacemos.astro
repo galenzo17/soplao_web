@@ -60,6 +60,29 @@ const features = [
       'Adaptamos nuestros servicios a las necesidades específicas de cada cliente.',
   },
 ];
+
+const equipment = [
+  {
+    name: 'Máquinas de Limpieza en Seco',
+    description: 'Nuestras máquinas de limpieza en seco eliminan eficazmente las partículas en suspensión y reducen los alérgenos, ideal para personas con alergias o problemas respiratorios.',
+    image: '/images/equipment-dry-cleaning.jpg'
+  },
+  {
+    name: 'Aspiradoras HEPA',
+    description: 'Utilizamos aspiradoras con filtros HEPA que capturan hasta el 99.97% de partículas, mejorando significativamente la calidad del aire.',
+    image: '/images/equipment-hepa.jpg'
+  },
+  {
+    name: 'Limpiadores a Vapor',
+    description: 'Nuestros equipos de vapor de alta temperatura desinfectan superficies sin necesidad de productos químicos agresivos.',
+    image: '/images/equipment-steam.jpg'
+  },
+  {
+    name: 'Equipos de Ultrasonido',
+    description: 'Utilizamos tecnología de ultrasonido para la limpieza de objetos delicados y de difícil acceso.',
+    image: '/images/equipment-ultrasound.jpg'
+  }
+];
 ---
 
 <Layout title="soplao.cl - Lo Que Hacemos">
@@ -108,8 +131,53 @@ const features = [
       </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Equipment Section -->
     <section class="bg-white py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-2xl lg:text-4xl font-bold text-center mb-12"
+          data-aos="fade-up"
+        >
+          NUESTRO EQUIPAMIENTO
+        </h2>
+        <p
+          class="text-gray-600 text-center max-w-3xl mx-auto mb-12 lg:text-lg"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Utilizamos tecnología avanzada para garantizar resultados excepcionales. Nuestras máquinas de limpieza en seco contribuyen a la eliminación de partículas en suspensión y reducen los alérgenos, creando ambientes más saludables.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {
+            equipment.map((item, index) => (
+              <div
+                class="bg-white rounded-lg shadow-md overflow-hidden"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div class="relative h-48">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-4 text-brand">
+                    {item.name}
+                  </h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-100 py-12 lg:py-20">
       <div class="max-w-7xl mx-auto px-4">
         <h2
           class="text-2xl lg:text-4xl font-bold text-center mb-12"

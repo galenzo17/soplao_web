@@ -1,3 +1,31 @@
+#!/bin/bash
+
+# Función para manejar sed en diferentes sistemas operativos
+sedCmd() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' "$@"
+  else
+    sed -i "$@"
+  fi
+}
+
+# Crear directorios si no existen
+mkdir -p backup
+mkdir -p public/images
+
+# Hacer backup de archivos originales
+cp src/pages/index.astro backup/index.astro.bak
+cp src/components/Header.astro backup/Header.astro.bak
+
+# Mover index.astro actual a servicios.astro
+cp src/pages/index.astro src/pages/servicios.astro
+sedCmd 's/<Layout title="soplao.cl - Servicios de Limpieza Profesional">/<Layout title="soplao.cl - Nuestros Servicios">/' src/pages/servicios.astro
+
+# Modificar el componente Header para incluir el nuevo link a servicios
+sedCmd 's/const navLinks = \[/const navLinks = \[\n  { href: "\/servicios", text: "SERVICIOS" },/' src/components/Header.astro
+
+# Crear el nuevo index.astro
+cat > src/pages/index.astro << 'EOL'
 ---
 import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
@@ -340,3 +368,13 @@ import "../styles/global.css";
     });
   });
 </script>
+EOL
+
+# Crear imágenes de muestra (debes reemplazar estas con tus propias imágenes)
+echo "Para completar la instalación, necesitas agregar las siguientes imágenes en la carpeta public/images/:"
+echo "- hero-bg.jpg: Una imagen para el fondo del hero (recomendado: imagen de limpieza de alta calidad)"
+echo "- parallax-bg.jpg: Una imagen para el efecto parallax (recomendado: imagen relacionada con limpieza)"
+echo ""
+echo "Puedes instalar el script con estos comandos:"
+echo "1. chmod +x modify-site.sh"
+echo "2. ./modify-site.sh"

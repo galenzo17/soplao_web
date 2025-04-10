@@ -11,7 +11,6 @@ const isActive = (path: string) => {
 
 // Array de enlaces para mantener el código DRY
 const navLinks = [
-  { href: "/servicios", text: "SERVICIOS" },
   { href: '/', text: 'INICIO' },
   { href: '/compromiso', text: 'COMPROMISO 💚' },
   { href: '/lo-que-hacemos', text: 'LO QUE HACEMOS' },
