@@ -1,0 +1,585 @@
+analiza estos archivos
+
+--- Files Start Here ---
+
+--- START FILE: src/pages/contacto.astro ---
+
+---
+// src/pages/contacto.astro
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+import Questionnaire from './questionnaire.astro';
+
+const socialLinks = [
+  {
+    name: 'WhatsApp',
+    icon: 'M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z',
+    href: 'https://wa.me/56912345678',
+    viewBox: '0 0 448 512',
+  },
+  {
+    name: 'Instagram',
+    icon: 'M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z',
+    href: 'https://instagram.com/soplao',
+    viewBox: '0 0 448 512',
+  },
+  {
+    name: 'Facebook',
+    icon: 'M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z',
+    href: 'https://facebook.com/soplao',
+    viewBox: '0 0 448 512',
+  },
+];
+
+const services = [
+  "Limpieza Convencional/Mantenimiento",
+  "Limpieza Profunda",
+  "Limpieza Fin de Arriendo",
+  "Limpieza de Alfombras Muro a Muro",
+  "Limpieza de Alfombra Decorativa",
+  "Limpieza de Colchón",
+  "Decapado de Pisos",
+  "Limpieza de Tapices",
+  "Limpieza Industrial de Muros",
+  "Limpieza Industrial de Cocina",
+  "Limpieza Industrial de Baños",
+  "Otro (especificar)"
+];
+---
+
+<Layout title="soplao.cl - Contacto">
+  <main class="bg-gray-100 min-h-screen py-12 lg:py-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <!-- Título -->
+      <h1
+        class="text-3xl lg:text-4xl font-bold text-center mb-8"
+        data-aos="fade-up"
+      >
+        CONTACTO
+      </h1>
+
+      <!-- Formulario de Contacto -->
+      <div
+        class="bg-white rounded-lg shadow-md p-8 mb-12"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <form class="space-y-6">
+          <div>
+            <label
+              for="nombre"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nombre
+            </label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            />
+          </div>
+          
+          <div>
+            <label
+              for="telefono"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            />
+          </div>
+          
+          <div>
+            <label
+              for="servicio"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Servicio a Cotizar
+            </label>
+            <select
+              id="servicio"
+              name="servicio"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            >
+              <option value="">Selecciona un servicio</option>
+              {services.map(service => (
+                <option value={service}>{service}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div>
+            <label
+              for="direccion"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Dirección donde se prestará el servicio
+            </label>
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="mensaje"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Detalles adicionales o requerimientos especiales
+            </label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="4"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand focus:border-brand"
+              required></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-brand text-white font-semibold py-3 px-6 rounded-md hover:bg-brand/90 transition-colors duration-200"
+          >
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
+      
+      <!-- Cuestionario -->
+      <div
+        class="bg-white rounded-lg shadow-md p-8 mb-12"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <h2 class="text-xl font-semibold mb-6 text-center">
+          ¿No estás seguro de qué necesitas? Completa nuestro cuestionario
+        </h2>
+        <Questionnaire />
+      </div>
+
+      <!-- Separador -->
+      <div class="text-center mb-8">
+        <span class="inline-block w-16 h-1 bg-brand rounded-full"></span>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="text-xl font-semibold mb-6">Síguenos en Redes Sociales</h2>
+        <div class="flex justify-center space-x-6">
+          {
+            socialLinks.map((social) => (
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600  transition-colors duration-200"
+                title={social.name}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  viewBox={social.viewBox}
+                  fill="currentColor"
+                >
+                  <path d={social.icon} />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Estilo para el autofill de inputs */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+</style>
+
+--- END FILE: src/pages/contacto.astro ---
+
+--- START FILE: src/pages/index.astro ---
+
+---
+import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
+---
+
+<Layout title="soplao.cl - Servicios de Limpieza Profesional">
+  <section class="relative min-h-screen flex items-center">
+    <div class="absolute inset-0 overflow-hidden z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-dark to-black opacity-70 z-10"></div>
+      <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('/images/hero-bg.jpg');"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 z-20 text-center text-white">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 opacity-0 hero-element" id="hero-title">
+        LIMPIEZA PROFESIONAL
+      </h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 opacity-0 hero-element" id="hero-subtitle">
+        Transformamos espacios a través de la limpieza de calidad, con productos ecológicos y tecnología de punta.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 opacity-0 hero-element" id="hero-buttons">
+        <a href="/servicios" class="bg-brand text-white font-semibold px-8 py-3 rounded-md hover:bg-brand-light transition-colors duration-300">
+          Ver Servicios
+        </a>
+        <a href="/contacto" class="bg-transparent text-white border-2 border-white font-semibold px-8 py-3 rounded-md hover:bg-white hover:text-brand transition-colors duration-300">
+          Solicitar Cotización
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">
+        ¿POR QUÉ ELEGIRNOS?
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-brand mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Experiencia Profesional</h3>
+          <p class="text-gray-600">
+            Equipo capacitado con años de experiencia en servicios de limpieza especializados.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-brand mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Productos Ecológicos</h3>
+          <p class="text-gray-600">
+            Limpiamos con productos biodegradables que cuidan el medio ambiente y tu salud.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-brand mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Tecnología Avanzada</h3>
+          <p class="text-gray-600">
+            Utilizamos equipos de última generación para resultados excepcionales.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
+          <div class="text-brand mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Resultados Garantizados</h3>
+          <p class="text-gray-600">
+            Satisfacción garantizada o devolvemos tu dinero. Nuestro compromiso con la calidad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 relative bg-parallax" id="parallax-section">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand to-brand-dark opacity-90 z-10"></div>
+    <div class="container mx-auto px-4 relative z-20">
+      <h2 class="text-3xl font-bold text-center text-white mb-16" data-aos="fade-up">
+        SERVICIOS DESTACADOS
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2" data-aos="flip-left" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-4">Limpieza de Hogar</h3>
+          <p class="mb-6">
+            Mantén tu espacio impecable con nuestro servicio profesional de limpieza residencial.
+          </p>
+          <a href="/servicios" class="text-brand font-medium inline-flex items-center service-link">
+            Ver más <span class="ml-2 transition-transform duration-300">→</span>
+          </a>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2" data-aos="flip-left" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-4">Limpieza Profunda</h3>
+          <p class="mb-6">
+            Servicio intensivo que elimina la suciedad acumulada en los rincones más difíciles.
+          </p>
+          <a href="/servicios" class="text-brand font-medium inline-flex items-center service-link">
+            Ver más <span class="ml-2 transition-transform duration-300">→</span>
+          </a>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2" data-aos="flip-left" data-aos-delay="300">
+          <h3 class="text-xl font-semibold mb-4">Servicios Especializados</h3>
+          <p class="mb-6">
+            Soluciones específicas para alfombras, tapizados, colchones y más.
+          </p>
+          <a href="/servicios" class="text-brand font-medium inline-flex items-center service-link">
+            Ver más <span class="ml-2 transition-transform duration-300">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">
+        LO QUE DICEN NUESTROS CLIENTES
+      </h2>
+      
+      <div class="relative overflow-hidden" id="testimonials-slider">
+        <div class="flex transition-transform duration-500" id="testimonials-track">
+          <div class="testimonial-slide min-w-full px-4">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="text-yellow-500 flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">"El servicio de limpieza fue excelente. Mi departamento quedó impecable y el equipo fue muy profesional y eficiente. Sin duda los recomendaré a mis amigos."</p>
+              <div class="font-medium">Carolina Méndez</div>
+            </div>
+          </div>
+          <div class="testimonial-slide min-w-full px-4">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="text-yellow-500 flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">"La limpieza de fin de arriendo superó mis expectativas. Mi antiguo departamento quedó como nuevo y recuperé el 100% de mi garantía. Muy recomendable."</p>
+              <div class="font-medium">Alejandro Torres</div>
+            </div>
+          </div>
+          <div class="testimonial-slide min-w-full px-4">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="text-yellow-500 flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4">"Contraté la limpieza de alfombras y quedaron como nuevas. El equipo fue puntual, profesional y dejó todo impecable. Definitivamente volveré a contratar sus servicios."</p>
+              <div class="font-medium">Marcela Rojas</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-center mt-8 space-x-2">
+          <button class="w-3 h-3 rounded-full bg-brand focus:outline-none slider-dot active" data-index="0"></button>
+          <button class="w-3 h-3 rounded-full bg-gray-300 focus:outline-none slider-dot" data-index="1"></button>
+          <button class="w-3 h-3 rounded-full bg-gray-300 focus:outline-none slider-dot" data-index="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 bg-brand text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">
+        ¿LISTO PARA TRANSFORMAR TU ESPACIO?
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
+        Contáctanos hoy mismo y descubre la diferencia de un servicio de limpieza profesional.
+      </p>
+      <a 
+        href="/contacto" 
+        class="inline-block bg-white text-brand font-semibold px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+        Solicitar Cotización
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-element {
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .hero-element.animate-hero {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .service-link:hover span {
+    transform: translateX(5px);
+  }
+  
+  .bg-parallax {
+    background-image: url('/images/parallax-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .slider-dot.active {
+    background-color: #0facaf;
+    width: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .bg-parallax {
+      background-attachment: scroll;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const heroElements = document.querySelectorAll('.hero-element');
+    setTimeout(() => {
+      for (const [index, el] of heroElements.entries()) {
+        setTimeout(() => {
+          el.classList.add('animate-hero');
+        }, index * 300);
+      }
+    }, 500);
+    
+    const parallaxSection = document.getElementById('parallax-section');
+    if (parallaxSection && window.innerWidth > 768) {
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const sectionTop = parallaxSection.offsetTop;
+        const speed = 0.3;
+        
+        if (scrollY > sectionTop - window.innerHeight && scrollY < sectionTop + parallaxSection.offsetHeight) {
+          const yPos = -(scrollY - sectionTop) * speed;
+          parallaxSection.style.backgroundPosition = `center ${yPos}px`;
+        }
+      });
+    }
+    
+    const testimonialTrack = document.getElementById('testimonials-track');
+    const dots = document.querySelectorAll('.slider-dot');
+    if (testimonialTrack && dots) {
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const index = parseInt(dot.getAttribute('data-index'));
+          testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+          
+          dots.forEach(d => d.classList.remove('active'));
+          dot.classList.add('active');
+        });
+      });
+      
+      let currentSlide = 0;
+      const totalSlides = dots.length;
+      
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        testimonialTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        dots.forEach(d => d.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+      }, 5000);
+    }
+    
+    const serviceLinks = document.querySelectorAll('.service-link');
+    serviceLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const arrow = link.querySelector('span');
+        arrow.style.transform = 'translateX(5px)';
+      });
+      
+      link.addEventListener('mouseleave', () => {
+        const arrow = link.querySelector('span');
+        arrow.style.transform = 'translateX(0)';
+      });
+    });
+  });
+</script>
+
+
+--- END FILE: src/pages/index.astro ---
+

@@ -1,42 +1,158 @@
-  ---
-  import Header from "../components/Header.astro";
-  import WhatsAppButton from "../components/WhatsAppButton.astro";
-  import "../styles/global.css";
+---
+import Header from '../components/Header.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
 
-  interface Props {
-    title: string;
-  }
+interface Props {
+  title: string;
+}
 
-  const { title } = Astro.props;
-  ---
+const { title } = Astro.props;
+---
 
-  <!DOCTYPE html>
-  <html lang="es">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width" />
-      <link rel="icon" type="image/svg+xml" href="/icons/soplao.svg" />
-      <link rel="apple-touch-icon" href="/icons/soplao.svg" />
-      <link rel="mask-icon" href="/icons/soplao.svg" color="#EAB308" />
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-      <meta name="generator" content={Astro.generator} />
-      <title>{title}</title>
-    </head>
-    <body>
-      <Header />
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/icons/soplao.svg" />
+    <link rel="apple-touch-icon" href="/icons/soplao.svg" />
+    <link rel="mask-icon" href="/icons/soplao.svg" color="#EAB308" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
 
-      <WhatsAppButton 
-        phone="56997164212"
-        message="Hola! Me gustaría consultar por sus servicios de limpieza" 
-      />
-      <slot />
-      <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
-      <script is:inline>
-        AOS.init({
-          duration: 800,
-          once: true,
-          disable: 'mobile'
-        });
-      </script>
-    </body>
-  </html>
+    <WhatsAppButton
+      phone="56997164212"
+      message="Hola! Me gustaría consultar por sus servicios de limpieza"
+    />
+    <slot />
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init({
+        duration: 800,
+        once: true,
+        disable: 'mobile',
+      });
+    </script>
+    <div id="dirt-container"></div>
+    <div id="vacuum-cleaner">
+      <div class="vacuum-body"></div>
+      <div class="vacuum-head"></div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          const dirtContainer = document.getElementById('dirt-container');
+          const vacuum = document.getElementById('vacuum-cleaner');
+          const dirtParticles = [];
+          const particleCount = 50;
+
+          const createDirtParticles = () => {
+            for (let i = 0; i < particleCount; i++) {
+              const dirt = document.createElement('div');
+              dirt.classList.add('dirt-particle');
+
+              const x = Math.random() * window.innerWidth;
+              const y = Math.random() * window.innerHeight;
+
+              dirt.style.left = `${x}px`;
+              dirt.style.top = `${y}px`;
+              dirt.style.opacity = Math.random() * 0.5 + 0.5;
+              dirt.style.width = `${Math.random() * 15 + 15}px`; // Más grande: de 15px a 30px
+              dirt.style.height = dirt.style.width;
+
+              dirtContainer.appendChild(dirt);
+              dirtParticles.push({
+                element: dirt,
+                x,
+                y,
+                cleaned: false,
+              });
+            }
+          };
+
+          const moveVacuum = () => {
+            let targetX = 0;
+            let targetY = 0;
+
+            const speed = 3.5; 
+
+            const findNextDirt = () => {
+              for (const dirt of dirtParticles) {
+                if (!dirt.cleaned) {
+                  return dirt;
+                }
+              }
+              return null;
+            };
+
+            const updatePosition = () => {
+              try {
+                const vacuumRect = vacuum.getBoundingClientRect();
+                const currentX = vacuumRect.left + vacuumRect.width / 2;
+                const currentY = vacuumRect.top + vacuumRect.height / 2;
+
+                const nextDirt = findNextDirt();
+
+                if (nextDirt) {
+                  targetX = nextDirt.x;
+                  targetY = nextDirt.y;
+
+                  const dx = targetX - currentX;
+                  const dy = targetY - currentY;
+                  const distance = Math.sqrt(dx * dx + dy * dy);
+
+                  if (distance < 20) {
+                    nextDirt.cleaned = true;
+                    nextDirt.element.style.opacity = '0';
+                    setTimeout(() => {
+                      try {
+                        nextDirt.element.remove();
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    }, 30);
+                  }
+
+                  const vx = (dx / distance) * speed;
+                  const vy = (dy / distance) * speed;
+
+                  const newX = currentX + vx;
+                  const newY = currentY + vy;
+
+                  vacuum.style.left = `${newX}px`;
+                  vacuum.style.top = `${newY}px`;
+
+                  const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+                  vacuum.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+                } else {
+                  const allCleaned = dirtParticles.every(
+                    (dirt) => dirt.cleaned
+                  );
+                  if (allCleaned) {
+                    setTimeout(createDirtParticles, 200);
+                  }
+                }
+
+                requestAnimationFrame(updatePosition);
+              } catch (err) {
+                console.error(err);
+              }
+            };
+
+            updatePosition();
+          };
+
+          createDirtParticles();
+          moveVacuum();
+        } catch (err) {
+          console.error('Error initializing vacuum cleaner animation:', err);
+        }
+      });
+    </script>
+  </body>
+</html>
