@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 /* Contenedor de suciedad */
 #dirt-container {
   position: fixed;
@@ -10,7 +9,6 @@
   pointer-events: none;
   z-index: 10;
 }
-
 /* Partículas de suciedad */
 .dirt-particle {
   position: absolute;
@@ -19,9 +17,9 @@
   background-color: rgba(139, 69, 19, 0.7);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
+  z-index: 10;
 }
-
 /* Aspiradora */
 #vacuum-cleaner {
   position: fixed;
@@ -34,7 +32,6 @@
   left: 50%;
   top: 50%;
 }
-
 /* Cuerpo de la aspiradora */
 .vacuum-body {
   position: absolute;
@@ -50,7 +47,6 @@
   overflow: hidden;
   border: 2px solid #222323;
 }
-
 /* Cabeza giratoria de la aspiradora */
 .vacuum-head {
   position: absolute;
@@ -61,7 +57,6 @@
   border-radius: 50%;
   animation: spin 1.5s linear infinite;
 }
-
 /* Animación de giro */
 @keyframes spin {
   from {
