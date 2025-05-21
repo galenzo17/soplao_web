@@ -5,9 +5,10 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  isHomePage?: boolean; // Optional prop
 }
 
-const { title } = Astro.props;
+const { title, isHomePage = false } = Astro.props; // Default to false if not provided
 ---
 
 <!doctype html>
@@ -38,16 +39,21 @@ const { title } = Astro.props;
         disable: 'mobile',
       });
     </script>
-    <div id="dirt-container"></div>
-    <div id="vacuum-cleaner">
-      <div class="vacuum-body"></div>
-      <div class="vacuum-head"></div>
-    </div>
+    {isHomePage && (
+      <>
+        <div id="dirt-container"></div>
+        <div id="vacuum-cleaner">
+          <div class="vacuum-body"></div>
+          <div class="vacuum-head"></div>
+        </div>
+      </>
+    )}
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-  try {
-    const dirtContainer = document.getElementById('dirt-container');
-    const vacuum = document.getElementById('vacuum-cleaner');
+  if (window.location.pathname === '/') {
+    try {
+      const dirtContainer = document.getElementById('dirt-container');
+      const vacuum = document.getElementById('vacuum-cleaner');
     const dirtParticles = [];
     const particleCount = 50;
     const collisionDistance = 5;
@@ -168,10 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePosition();
     };
 
-    createDirtParticles();
-    moveVacuum();
-  } catch (err) {
-    console.error('Error initializing vacuum cleaner animation:', err);
+      createDirtParticles();
+      moveVacuum();
+    } catch (err) {
+      console.error('Error initializing vacuum cleaner animation:', err);
+    }
   }
 });
     </script>
