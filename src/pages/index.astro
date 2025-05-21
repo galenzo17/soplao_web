@@ -26,6 +26,24 @@ import "../styles/global.css";
         </a>
       </div>
     </div>
+
+    <!-- Vacuum Cleaner Animation HTML Start -->
+    <div class="vacuum-container" style="position: absolute; bottom: 50px; left: 50px; width: 300px; height: 200px; z-index: 5;">
+      <div class="vacuum-cleaner">
+        <div class="vacuum-body">
+          <div class="vacuum-handle"></div>
+        </div>
+        <div class="vacuum-hose"></div>
+      </div>
+      <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </div>
+    <!-- Vacuum Cleaner Animation HTML End -->
   </section>
 
   <section class="py-20 bg-white">
@@ -340,3 +358,109 @@ import "../styles/global.css";
     });
   });
 </script>
+
+<style is:global>
+  .vacuum-container {
+    /* width: 300px; /* Defined inline for now */
+    /* height: 200px; /* Defined inline for now */
+    /* position: relative; /* Set inline for now */
+    overflow: hidden; /* To contain particles if they fly out */
+  }
+
+  .vacuum-cleaner {
+    position: absolute;
+    bottom: 10px; /* Example positioning */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Example size */
+    animation: moveVacuum 4s ease-in-out infinite;
+    z-index: 10; /* Ensure it's above background elements if necessary */
+  }
+
+  .vacuum-body {
+    width: 100px;
+    height: 60px;
+    background-color: #7f8c8d; /* Greyish color */
+    border-radius: 20px 20px 10px 10px;
+    position: relative;
+  }
+
+  .vacuum-handle {
+    width: 15px;
+    height: 40px;
+    background-color: #34495e; /* Darker grey/blue */
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px 5px 0 0;
+  }
+
+  .vacuum-hose {
+    width: 120px; /* Hose length */
+    height: 20px;
+    background-color: #95a5a6; /* Lighter grey */
+    position: absolute;
+    bottom: 5px;
+    left: -100px; /* Attach to the left side of the body */
+    border-radius: 10px;
+    transform-origin: right center; /* Animation origin */
+    transform: rotate(-15deg);
+  }
+
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #bdc3c7; /* Light grey particles */
+    border-radius: 50%;
+    opacity: 0; /* Start invisible */
+  }
+
+  /* Particle initial positions - spread them out */
+  .particle:nth-child(1) { top: 70%; left: 10%; animation: suckParticle 3s linear infinite; animation-delay: 0s; }
+  .particle:nth-child(2) { top: 60%; left: 30%; animation: suckParticle 3s linear infinite; animation-delay: 0.5s; }
+  .particle:nth-child(3) { top: 80%; left: 5%;  animation: suckParticle 3s linear infinite; animation-delay: 1s; }
+  .particle:nth-child(4) { top: 65%; left: 20%; animation: suckParticle 3s linear infinite; animation-delay: 1.5s; }
+  .particle:nth-child(5) { top: 75%; left: 15%; animation: suckParticle 3s linear infinite; animation-delay: 2s; }
+
+
+  @keyframes moveVacuum {
+    0%, 100% {
+      transform: translateX(-50%) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-60%) rotate(-5deg); /* Move left and tilt */
+    }
+    75% {
+      transform: translateX(-40%) rotate(5deg); /* Move right and tilt */
+    }
+  }
+
+  @keyframes suckParticle {
+    0% {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      /*
+        Particles start at various positions (e.g., top: 70%, left: 10%).
+        The vacuum cleaner body is centered (left: 50%). Hose is 'left: -100px' from body.
+        This means hose opening is to the left of the body's center.
+        Particles are higher (top: 60-80%) than the hose (bottom: 5px on body, body bottom: 10px).
+        So particles need to move left and down.
+        Approximate translation: move left significantly, move down moderately.
+      */
+      transform: translate(-40px, 30px) scale(0); /* Move left by 40px, down by 30px */
+    }
+  }
+</style>
