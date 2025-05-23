@@ -1,13 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
+
+const heroImage =
+  'https://images.unsplash.com/photo-1581579186899-fc27aa8c609b?auto=format&fit=crop&w=1600&q=80';
+const parallaxImage =
+  'https://images.unsplash.com/photo-1561350111-0759be9969fd?auto=format&fit=crop&w=1600&q=80';
+const galleryImages = [
+  'https://images.unsplash.com/photo-1611448748001-bc9a1db06031?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1598032890583-9e7bf51b3e5a?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1589919247162-e2b709442fe9?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1583944337114-fc01e4c092aa?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1590490360181-7aa9c0c0fb29?auto=format&fit=crop&w=800&q=80',
+];
 ---
 
 <Layout title="soplao.cl - Servicios de Limpieza Profesional" isHomePage={true}>
   <section class="relative min-h-screen flex items-center">
     <div class="absolute inset-0 overflow-hidden z-0">
       <div class="absolute inset-0 bg-gradient-to-b from-brand-dark to-black opacity-70 z-10"></div>
-      <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581579186899-fc27aa8c609b?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div
+        class="absolute inset-0 z-0 bg-cover bg-center"
+        style={`background-image: url('${heroImage}');`}
+      ></div>
     </div>
     
     <div class="container mx-auto px-4 z-20 text-center text-white">
@@ -24,6 +40,30 @@ import "../styles/global.css";
         <a href="/contacto" class="bg-transparent text-white border-2 border-white font-semibold px-8 py-3 rounded-md hover:bg-white hover:text-brand transition-colors duration-300">
           Solicitar Cotización
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">
+        GALERÍA DE TRABAJOS
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {galleryImages.map((img, index) => (
+          <div
+            class="overflow-hidden rounded-lg"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <img
+              src={img}
+              alt="Ejemplo de limpieza"
+              class="w-full h-56 object-cover"
+            />
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -86,7 +126,11 @@ import "../styles/global.css";
     </div>
   </section>
   
-  <section class="py-20 relative bg-parallax" id="parallax-section">
+  <section
+    class="py-20 relative bg-parallax"
+    id="parallax-section"
+    style={`background-image: url('${parallaxImage}');`}
+  >
     <div class="absolute inset-0 bg-gradient-to-b from-brand to-brand-dark opacity-90 z-10"></div>
     <div class="container mx-auto px-4 relative z-20">
       <h2 class="text-3xl font-bold text-center text-white mb-16" data-aos="fade-up">
@@ -257,7 +301,6 @@ import "../styles/global.css";
   }
   
   .bg-parallax {
-    background-image: url('https://images.unsplash.com/photo-1561350111-0759be9969fd?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
