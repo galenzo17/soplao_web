@@ -73,22 +73,26 @@ const equipment = [
   {
     name: 'Máquinas de Limpieza en Seco',
     description: 'Nuestras máquinas de limpieza en seco eliminan eficazmente las partículas en suspensión y reducen los alérgenos, ideal para personas con alergias o problemas respiratorios.',
-    image: 'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=60'
+    image: 'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=60',
+    url: 'https://www.karcher.com/int/home-garden/vacuum-cleaners/dry-vacuum-cleaner.html'
   },
   {
     name: 'Aspiradoras HEPA',
     description: 'Utilizamos aspiradoras con filtros HEPA que capturan hasta el 99.97% de partículas, mejorando significativamente la calidad del aire.',
-    image: 'https://images.unsplash.com/photo-1598032890583-9e7bf51b3e5a?auto=format&fit=crop&w=800&q=60'
+    image: 'https://images.unsplash.com/photo-1598032890583-9e7bf51b3e5a?auto=format&fit=crop&w=800&q=60',
+    url: 'https://www.dyson.com/vacuum-cleaners'
   },
   {
     name: 'Limpiadores a Vapor',
     description: 'Nuestros equipos de vapor de alta temperatura desinfectan superficies sin necesidad de productos químicos agresivos.',
-    image: 'https://images.unsplash.com/photo-1589919247162-e2b709442fe9?auto=format&fit=crop&w=800&q=60'
+    image: 'https://images.unsplash.com/photo-1589919247162-e2b709442fe9?auto=format&fit=crop&w=800&q=60',
+    url: 'https://www.karcher.com/int/home-garden/steam-cleaners.html'
   },
   {
     name: 'Equipos de Ultrasonido',
     description: 'Utilizamos tecnología de ultrasonido para la limpieza de objetos delicados y de difícil acceso.',
-    image: 'https://images.unsplash.com/photo-1590490360181-7aa9c0c0fb29?auto=format&fit=crop&w=800&q=60'
+    image: 'https://images.unsplash.com/photo-1590490360181-7aa9c0c0fb29?auto=format&fit=crop&w=800&q=60',
+    url: 'https://www.crest-ultrasonics.com/ultrasonic-cleaners/'
   }
 ];
 ---
@@ -175,7 +179,16 @@ const equipment = [
                   <h3 class="text-xl font-semibold mb-4 text-brand">
                     {item.name}
                   </h3>
-                  <p class="text-gray-600">{item.description}</p>
+                  <p class="text-gray-600 mb-4">{item.description}</p>
+                  <a
+                    href={item.url}
+                    class="text-brand font-medium inline-flex items-center equipment-link"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Más información
+                    <span class="ml-2 transition-transform duration-300">→</span>
+                  </a>
                 </div>
               </div>
             ))
@@ -213,3 +226,9 @@ const equipment = [
     </section>
   </main>
 </Layout>
+
+<style>
+  .equipment-link:hover span {
+    transform: translateX(5px);
+  }
+</style>
