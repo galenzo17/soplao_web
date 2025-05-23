@@ -55,13 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const dirtContainer = document.getElementById('dirt-container');
       const vacuum = document.getElementById('vacuum-cleaner');
     const dirtParticles = [];
-    const particleCount = 50;
+    const particleCount = 30;
+    const colors = ['#0b8082', '#15d8dc'];
     const collisionDistance = 5;
 
     const createDirtParticles = () => {
       for (let i = 0; i < particleCount; i++) {
         const dirt = document.createElement('div');
         dirt.classList.add('dirt-particle');
+        dirt.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
