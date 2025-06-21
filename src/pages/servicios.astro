@@ -8,7 +8,7 @@ const services = [
   {
     title: "Limpieza Convencional/Mantenimiento",
     description: "Limpieza general de espacios habitados, ideal para mantener tu hogar u oficina en óptimas condiciones.",
-    image: "https://images.unsplash.com/photo-1581579186899-fc27aa8c609b?auto=format&fit=crop&w=800&q=60",
+    image: "/images/general_clean.jpeg",
     prices: [
       { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 62.000" },
       { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 85.000" },
@@ -19,7 +19,7 @@ const services = [
   {
     title: "Limpieza Profunda",
     description: "Limpieza exhaustiva que incluye espacios de difícil acceso, ideal para reorganización o eventos especiales.",
-    image: "https://images.unsplash.com/photo-1611448748001-bc9a1db06031?auto=format&fit=crop&w=800&q=60",
+    image: "/images/deep_clean1.jpeg",
     prices: [
       { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 80.000" },
       { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 115.000" },
@@ -43,56 +43,56 @@ const specializedServices = [
   {
     title: "Limpieza de Alfombras Muro a Muro",
     description: "Limpieza profesional y profunda de alfombras instaladas.",
-    image: "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=60",
+    image: "/images/carpet_clean1.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Metraje" }],
     direction: 'left'
   },
   {
     title: "Limpieza de Alfombra Decorativa",
     description: "Limpieza especializada para alfombras decorativas sin secado.",
-    image: "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=60",
+    image: "/images/carpet_clean2.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
     direction: 'right'
   },
   {
     title: "Limpieza de Colchón",
     description: "Eliminación de ácaros, manchas y olores de colchones.",
-    image: "https://images.unsplash.com/photo-1589919247162-e2b709442fe9?auto=format&fit=crop&w=800&q=60",
+    image: "/images/mattress_clean.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
     direction: 'left'
   },
   {
     title: "Decapado de Pisos",
     description: "Restauración y limpieza profunda de pisos.",
-    image: "https://images.unsplash.com/photo-1598032890583-9e7bf51b3e5a?auto=format&fit=crop&w=800&q=60",
+    image: "/images/floor_restore.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Metraje" }],
     direction: 'right'
   },
   {
     title: "Limpieza de Tapices",
     description: "Limpieza especializada para muebles tapizados y telas.",
-    image: "https://images.unsplash.com/photo-1590490360181-7aa9c0c0fb29?auto=format&fit=crop&w=800&q=60",
+    image: "/images/tapestry_clean.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
     direction: 'left'
   },
   {
     title: "Limpieza Industrial de Muros",
     description: "Limpieza profunda para muros en entornos industriales y comerciales.",
-    image: "https://images.unsplash.com/photo-1583944337114-fc01e4c092aa?auto=format&fit=crop&w=800&q=60",
+    image: "/images/wall_clean.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Área" }],
     direction: 'right'
   },
   {
     title: "Limpieza Industrial de Cocina",
     description: "Limpieza especializada para cocinas industriales y comerciales.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b4b811d316?auto=format&fit=crop&w=800&q=60",
+    image: "/images/industrial_kitchen_clean.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
     direction: 'left'
   },
   {
     title: "Limpieza Industrial de Baños",
     description: "Desinfección y limpieza profunda para baños comerciales.",
-    image: "https://images.unsplash.com/photo-1590490353270-0af0cb1149d5?auto=format&fit=crop&w=800&q=60",
+    image: "/images/bathroom_clean.jpeg",
     prices: [{ label: "Cotización Personalizada", price: "Según Cantidad" }],
     direction: 'right'
   }
@@ -101,8 +101,9 @@ const specializedServices = [
 
 <Layout title="soplao.cl - Nuestros Servicios">
   <!-- Banner de Misión/Visión -->
-  <section class="bg-brand-dark text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 text-center">
+  <section class="relative py-16 bg-cover bg-center" style="background-image: url('/images/team_clean.jpeg');">
+    <div class="absolute inset-0 bg-black opacity-70"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center text-white">
       <h2 class="text-2xl lg:text-3xl font-bold mb-6" data-aos="fade-up">NUESTRA MISIÓN</h2>
       <p class="max-w-3xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="100">
         En SOPLAO nos dedicamos a transformar espacios a través de la limpieza profesional, utilizando tecnología de punta y productos ecológicos. Nuestro compromiso es brindar un servicio excepcional que mejore la calidad de vida de nuestros clientes, cuidando tanto de su salud como del medio ambiente.
