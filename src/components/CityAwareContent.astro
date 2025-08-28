@@ -1,0 +1,126 @@
+---
+// Example component that shows different content based on selected city
+// Other pages can use this pattern to display city-specific information
+---
+
+<div id="city-content">
+  <div class="city-indicator">
+    <span id="current-city-name">Santiago</span>
+  </div>
+  
+  <div id="city-specific-content">
+    <div class="city-content" data-city="santiago">
+      <h3>Servicios en Santiago</h3>
+      <p>Cobertura en toda la Región Metropolitana</p>
+    </div>
+    
+    <div class="city-content hidden" data-city="pucon">
+      <h3>Servicios en Pucón</h3>
+      <p>Cobertura en Pucón y alrededores</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { cityStore, type City, getCityDisplayName } from '../stores/cityStore.js';
+
+  class CityAwareContent {
+    private unsubscribe?: () => void;
+
+    constructor() {
+      this.init();
+    }
+
+    private init(): void {
+      this.subscribeToStore();
+      this.updateContent();
+    }
+
+    private subscribeToStore(): void {
+      this.unsubscribe = cityStore.subscribe((city: City) => {
+        this.updateContent();
+      });
+    }
+
+    private updateContent(): void {
+      const currentCity = cityStore.getCurrentCity();
+      const cityNameElement = document.getElementById('current-city-name');
+      const cityContents = document.querySelectorAll('.city-content');
+
+      // Update city name indicator
+      if (cityNameElement) {
+        cityNameElement.textContent = getCityDisplayName(currentCity);
+      }
+
+      // Show/hide city-specific content
+      cityContents.forEach(content => {
+        const contentElement = content as HTMLElement;
+        const contentCity = contentElement.dataset.city;
+        
+        if (contentCity === currentCity) {
+          contentElement.classList.remove('hidden');
+        } else {
+          contentElement.classList.add('hidden');
+        }
+      });
+    }
+
+    public destroy(): void {
+      if (this.unsubscribe) {
+        this.unsubscribe();
+      }
+    }
+  }
+
+  let content: CityAwareContent;
+
+  const initializeContent = () => {
+    if (content) {
+      content.destroy();
+    }
+    content = new CityAwareContent();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeContent);
+  } else {
+    initializeContent();
+  }
+</script>
+
+<style>
+  .city-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f3f4f6;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+
+  .city-indicator::before {
+    content: "📍";
+    font-size: 1rem;
+  }
+
+  .city-content {
+    transition: opacity 0.3s ease;
+  }
+
+  .city-content.hidden {
+    display: none;
+  }
+
+  .city-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #0facaf;
+  }
+
+  .city-content p {
+    margin: 0;
+    color: #6b7280;
+  }
+</style>
