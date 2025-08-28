@@ -320,9 +320,30 @@ const specializedServices: Service[] = [
             </tbody>
           </table>
         </div>
-        <p class="mt-4 text-sm text-gray-600 text-center">
-          (*) Logia y terraza va a depender del servicio que se requiera.
-        </p>
+        <div class="mt-4 space-y-2">
+          <p class="text-sm text-gray-600 text-center">
+            (*) Logia y terraza va a depender del servicio que se requiera.
+          </p>
+          
+          <!-- Disclaimer sobre visitas previas -->
+          <div class="pricing-disclaimer bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h4 class="text-sm font-medium text-blue-800">
+                  Importante
+                </h4>
+                <p class="text-sm text-blue-700 mt-1">
+                  *La determinación del precio final, en algunos casos, dependerá de la realización de una visita previa.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -331,6 +352,31 @@ const specializedServices: Service[] = [
 <style>
   section {
     container-type: inline-size;
+  }
+
+  /* Pricing disclaimer styles */
+  .pricing-disclaimer {
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing-disclaimer:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive adjustments for disclaimer */
+  @media (max-width: 640px) {
+    .pricing-disclaimer {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      border-radius: 0;
+      border-left-width: 4px;
+    }
+    
+    .pricing-disclaimer .flex {
+      flex-direction: row;
+      align-items: flex-start;
+    }
   }
 
   @container (min-width: 1024px) {
