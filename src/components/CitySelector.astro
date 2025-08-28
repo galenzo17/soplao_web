@@ -27,83 +27,77 @@
 </div>
 
 <script>
-  import { cityStore, type City } from '../stores/cityStore.js';
+  // Simple city selector without imports
+  let currentCity = 'santiago'; // Default city
 
-  // City selector functionality using the centralized store
-  class CitySelector {
-    private unsubscribe?: () => void;
-
-    constructor() {
-      this.init();
+  // Load from localStorage
+  function loadCurrentCity() {
+    const stored = localStorage.getItem('selected-city');
+    if (stored && (stored === 'santiago' || stored === 'pucon')) {
+      currentCity = stored;
     }
+    return currentCity;
+  }
 
-    private init(): void {
-      this.setupEventListeners();
-      this.subscribeToStore();
-      this.updateUI();
-    }
+  // Save to localStorage
+  function saveCurrentCity(city) {
+    currentCity = city;
+    localStorage.setItem('selected-city', city);
+  }
 
-    private setupEventListeners(): void {
-      const tabs = document.querySelectorAll('.city-tab');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-          const target = e.target as HTMLButtonElement;
-          const city = target.dataset.city;
-          if (city && (city === 'santiago' || city === 'pucon')) {
-            cityStore.setCity(city as City);
-          }
-        });
-      });
-    }
+  // Update UI
+  function updateUI() {
+    const tabs = document.querySelectorAll('.city-tab');
+    tabs.forEach(tab => {
+      const city = tab.dataset.city;
+      if (city === currentCity) {
+        tab.classList.add('active');
+        tab.setAttribute('aria-pressed', 'true');
+      } else {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-pressed', 'false');
+      }
+    });
+  }
 
-    private subscribeToStore(): void {
-      this.unsubscribe = cityStore.subscribe((city: City) => {
-        this.updateUI();
-      });
-    }
+  // Dispatch city change event
+  function dispatchCityChange() {
+    const event = new CustomEvent('citychange', {
+      detail: { city: currentCity },
+      bubbles: true
+    });
+    document.dispatchEvent(event);
+  }
 
-    private updateUI(): void {
-      const currentCity = cityStore.getCurrentCity();
-      const tabs = document.querySelectorAll('.city-tab');
-      
-      tabs.forEach(tab => {
-        const tabElement = tab as HTMLElement;
-        const city = tabElement.dataset.city;
-        if (city === currentCity) {
-          tabElement.classList.add('active');
-          tabElement.setAttribute('aria-pressed', 'true');
-        } else {
-          tabElement.classList.remove('active');
-          tabElement.setAttribute('aria-pressed', 'false');
+  // Setup event listeners
+  function setupEventListeners() {
+    const tabs = document.querySelectorAll('.city-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        const city = e.target.dataset.city;
+        if (city && (city === 'santiago' || city === 'pucon')) {
+          saveCurrentCity(city);
+          updateUI();
+          dispatchCityChange();
         }
       });
-    }
-
-    public destroy(): void {
-      if (this.unsubscribe) {
-        this.unsubscribe();
-      }
-    }
+    });
   }
 
-  let selector: CitySelector;
+  // Initialize
+  function initializeCitySelector() {
+    loadCurrentCity();
+    setupEventListeners();
+    updateUI();
+    dispatchCityChange(); // Trigger initial event
+  }
 
   // Initialize when DOM is ready
-  const initializeSelector = () => {
-    if (selector) {
-      selector.destroy();
-    }
-    selector = new CitySelector();
-  };
-
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeSelector);
+    document.addEventListener('DOMContentLoaded', initializeCitySelector);
   } else {
-    initializeSelector();
+    initializeCitySelector();
   }
-
-  // Initialize the store
-  cityStore.initialize();
 </script>
 
 <style>
