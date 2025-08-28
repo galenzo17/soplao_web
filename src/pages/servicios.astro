@@ -2,108 +2,100 @@
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import "../styles/global.css";
+import { mainServicesPricing, specializedServicesPricing } from '../data/cityPricing.js';
+import type { Service } from '../types/pricing.js';
 
-// TODO: Replace placeholder images with photographs of nuestros servicios
-const services = [
+// Main services with city-specific pricing
+const services: Service[] = [
   {
     title: "Limpieza Convencional/Mantenimiento",
     description: "Limpieza general de espacios habitados, ideal para mantener tu hogar u oficina en óptimas condiciones.",
     image: "/images/general_clean.jpeg",
-    prices: [
-      { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 62.000" },
-      { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 85.000" },
-      { label: "Desde 100m² en adelante", price: "$ 120.000" }
-    ],
+    prices: mainServicesPricing.conventional,
     direction: 'left'
   },
   {
     title: "Limpieza Profunda",
     description: "Limpieza exhaustiva que incluye espacios de difícil acceso, ideal para reorganización o eventos especiales.",
     image: "/images/deep_clean1.jpeg",
-    prices: [
-      { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 80.000" },
-      { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 115.000" },
-      { label: "Desde 100m² en adelante", price: "$ 156.000" }
-    ],
+    prices: mainServicesPricing.deepCleaning,
     direction: 'right'
   },
   {
     title: "Limpieza Fin de Arriendo",
     description: "Servicio especializado para propiedades que serán entregadas a nuevos inquilinos. Incluye limpieza profunda de todas las áreas.",
     image: "/images/end_of_rent.jpeg",
-    prices: [
-      { label: "Cotización Personalizada", price: "Solicitar Presupuesto" }
-    ],
+    prices: mainServicesPricing.endOfRent,
     direction: 'left'
   }
-] as const;
+];
 
-// TODO: Replace placeholder images with high quality photos of equipment
-const specializedServices = [
+// Specialized services with city-specific pricing
+const specializedServices: Service[] = [
   {
     title: "Limpieza de Alfombras Muro a Muro",
     description: "Limpieza profesional y profunda de alfombras instaladas.",
     image: "/images/carpet_clean1.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Metraje" }],
+    prices: specializedServicesPricing.carpetCleaning,
     direction: 'left'
   },
   {
     title: "Limpieza de Alfombra Decorativa",
     description: "Limpieza especializada para alfombras decorativas sin secado.",
     image: "/images/carpet_clean2.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    prices: specializedServicesPricing.carpetCleaning,
     direction: 'right'
   },
   {
     title: "Limpieza de Colchón",
     description: "Eliminación de ácaros, manchas y olores de colchones.",
     image: "/images/mattress_clean.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    prices: specializedServicesPricing.mattressCleaning,
     direction: 'left'
   },
   {
     title: "Decapado de Pisos",
     description: "Restauración y limpieza profunda de pisos.",
     image: "/images/floor_restore.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Metraje" }],
+    prices: specializedServicesPricing.floorRestoration,
     direction: 'right'
   },
   {
     title: "Limpieza de Tapices",
     description: "Limpieza especializada para muebles tapizados y telas.",
     image: "/images/tapestry_clean.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    prices: specializedServicesPricing.tapestryUpholstery,
     direction: 'left'
   },
   {
     title: "Limpieza Industrial de Muros",
     description: "Limpieza profunda para muros en entornos industriales y comerciales.",
     image: "/images/wall_clean.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Área" }],
+    prices: specializedServicesPricing.kitchenCleaning, // Using kitchen cleaning pricing structure
     direction: 'right'
   },
   {
     title: "Limpieza Industrial de Cocina",
     description: "Limpieza especializada para cocinas industriales y comerciales.",
     image: "/images/industrial_kitchen_clean.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Tamaño" }],
+    prices: specializedServicesPricing.industrialKitchen,
     direction: 'left'
   },
   {
     title: "Limpieza Industrial de Baños",
     description: "Desinfección y limpieza profunda para baños comerciales.",
     image: "/images/bathroom_clean.jpeg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Cantidad" }],
+    prices: specializedServicesPricing.bathroomCleaning,
     direction: 'right'
   },
   {
     title: "Limpieza de Vidrios",
     description: "Limpieza profesional de ventanas, cristales y superficies de vidrio.",
     image: "/images/karcher-steam-cleaner.jpg",
-    prices: [{ label: "Cotización Personalizada", price: "Según Área" }],
+    prices: specializedServicesPricing.windowCleaning,
     direction: 'left'
   }
-] as const;
+];
 ---
 
 <Layout title="soplao.cl - Nuestros Servicios">
