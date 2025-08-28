@@ -1,5 +1,6 @@
 ---
 import type { ServicePrices } from '../types/pricing.js';
+import { getPricesForCity } from '../types/pricing.js';
 
 interface Props {
   title: string;
@@ -10,6 +11,10 @@ interface Props {
 }
 
 const { title, description, prices, image, direction } = Astro.props;
+
+// Get default prices for server-side rendering (Santiago by default)
+const santiagoprices = getPricesForCity(prices, 'santiago');
+const puconPrices = getPricesForCity(prices, 'pucon');
 ---
 <div
   class="w-full lg:w-1/2"
@@ -36,12 +41,24 @@ const { title, description, prices, image, direction } = Astro.props;
         <div class="pricing-display flex flex-col items-center space-y-1 lg:space-y-2">
           <!-- Santiago prices (default visible) -->
           <div class="city-prices" data-city="santiago">
-            <!-- Prices will be populated by JavaScript -->
+            {santiagoprices.map(item => (
+              <div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
+                <span class="font-medium text-right min-w-[100px]">{item.label}</span>
+                <span>:</span>
+                <span class="service-price font-bold min-w-[80px] text-left">{item.price}</span>
+              </div>
+            ))}
           </div>
           
           <!-- Pucón prices (hidden by default) -->
           <div class="city-prices hidden" data-city="pucon">
-            <!-- Prices will be populated by JavaScript -->
+            {puconPrices.map(item => (
+              <div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
+                <span class="font-medium text-right min-w-[100px]">{item.label}</span>
+                <span>:</span>
+                <span class="service-price font-bold min-w-[80px] text-left">{item.price}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -49,9 +66,8 @@ const { title, description, prices, image, direction } = Astro.props;
   </div>
 </div>
 
-<script define:vars={{ prices, title }}>
+<script define:vars={{ title }}>
   import { cityStore, type City, getCityDisplayName } from '../stores/cityStore.js';
-  import { getPricesForCity, isLegacyPricing, isCityPricing } from '../types/pricing.js';
 
   class ServiceCardManager {
     private container: HTMLElement;
@@ -63,38 +79,8 @@ const { title, description, prices, image, direction } = Astro.props;
     }
 
     private init(): void {
-      this.populateInitialPrices();
       this.subscribeToStore();
       this.updateDisplay();
-    }
-
-    private populateInitialPrices(): void {
-      const santiagoContainer = this.container.querySelector('[data-city="santiago"]');
-      const puconContainer = this.container.querySelector('[data-city="pucon"]');
-      
-      if (!santiagoContainer || !puconContainer) return;
-
-      // Get prices for each city
-      const santiagoprices = getPricesForCity(prices, 'santiago');
-      const puconPrices = getPricesForCity(prices, 'pucon');
-
-      // Populate Santiago prices
-      santiagoContainer.innerHTML = santiagoprices.map(item => 
-        `<div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
-          <span class="font-medium text-right min-w-[100px]">${item.label}</span>
-          <span>:</span>
-          <span class="service-price font-bold min-w-[80px] text-left">${item.price}</span>
-        </div>`
-      ).join('');
-
-      // Populate Pucón prices
-      puconContainer.innerHTML = puconPrices.map(item => 
-        `<div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
-          <span class="font-medium text-right min-w-[100px]">${item.label}</span>
-          <span>:</span>
-          <span class="service-price font-bold min-w-[80px] text-left">${item.price}</span>
-        </div>`
-      ).join('');
     }
 
     private subscribeToStore(): void {
@@ -108,7 +94,7 @@ const { title, description, prices, image, direction } = Astro.props;
       const cityNameElement = this.container.querySelector('.current-city-name');
       const cityContainers = this.container.querySelectorAll('.city-prices');
 
-      // Update city name
+      // Update city name indicator
       if (cityNameElement) {
         cityNameElement.textContent = getCityDisplayName(currentCity);
       }
