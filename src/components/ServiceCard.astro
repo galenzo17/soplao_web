@@ -67,75 +67,47 @@ const puconPrices = getPricesForCity(prices, 'pucon');
 </div>
 
 <script define:vars={{ title }}>
-  import { cityStore, type City, getCityDisplayName } from '../stores/cityStore.js';
+  // Simple city change handler without imports
+  function updateServiceCardPrices() {
+    const containers = document.querySelectorAll('.city-pricing-container');
+    containers.forEach(container => {
+      const serviceTitle = container.closest('.service-card')?.querySelector('.service-title')?.textContent;
+      if (serviceTitle === title) {
+        handleCityChange(container);
+      }
+    });
+  }
 
-  class ServiceCardManager {
-    private container: HTMLElement;
-    private unsubscribe?: () => void;
-    
-    constructor(container: HTMLElement) {
-      this.container = container;
-      this.init();
-    }
-
-    private init(): void {
-      this.subscribeToStore();
-      this.updateDisplay();
-    }
-
-    private subscribeToStore(): void {
-      this.unsubscribe = cityStore.subscribe((city: City) => {
-        this.updateDisplay();
-      });
-    }
-
-    private updateDisplay(): void {
-      const currentCity = cityStore.getCurrentCity();
-      const cityNameElement = this.container.querySelector('.current-city-name');
-      const cityContainers = this.container.querySelectorAll('.city-prices');
+  function handleCityChange(container) {
+    // Listen for city change events
+    document.addEventListener('citychange', (e) => {
+      const currentCity = e.detail.city;
+      const cityNameElement = container.querySelector('.current-city-name');
+      const cityContainers = container.querySelectorAll('.city-prices');
 
       // Update city name indicator
       if (cityNameElement) {
-        cityNameElement.textContent = getCityDisplayName(currentCity);
+        cityNameElement.textContent = currentCity === 'santiago' ? 'Santiago' : 'Pucón';
       }
 
       // Show/hide appropriate price container
-      cityContainers.forEach(container => {
-        const containerElement = container as HTMLElement;
-        const containerCity = containerElement.dataset.city;
+      cityContainers.forEach(priceContainer => {
+        const containerCity = priceContainer.dataset.city;
         
         if (containerCity === currentCity) {
-          containerElement.classList.remove('hidden');
+          priceContainer.classList.remove('hidden');
         } else {
-          containerElement.classList.add('hidden');
+          priceContainer.classList.add('hidden');
         }
       });
-    }
-
-    public destroy(): void {
-      if (this.unsubscribe) {
-        this.unsubscribe();
-      }
-    }
-  }
-
-  // Initialize for this service card
-  const initializeServiceCard = () => {
-    const containers = document.querySelectorAll('.city-pricing-container');
-    containers.forEach(container => {
-      // Check if this container belongs to this specific service
-      const serviceTitle = container.closest('.service-card')?.querySelector('.service-title')?.textContent;
-      if (serviceTitle === title) {
-        new ServiceCardManager(container as HTMLElement);
-      }
     });
-  };
+  }
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeServiceCard);
+    document.addEventListener('DOMContentLoaded', updateServiceCardPrices);
   } else {
-    initializeServiceCard();
+    updateServiceCardPrices();
   }
 </script>
 

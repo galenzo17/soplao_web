@@ -62,8 +62,8 @@ export const cityAdjustments: Record<string, PriceAdjustment> = {
     // Santiago uses base prices (no adjustment)
   },
   pucon: {
-    // Pucón prices are generally 15% higher due to location and travel costs
-    multiplier: 1.15,
+    // Pucón prices are generally 20% higher due to location and travel costs
+    multiplier: 1.20,
     // Some custom adjustments for specific services
     customPrices: undefined // Will be overridden per service if needed
   }
