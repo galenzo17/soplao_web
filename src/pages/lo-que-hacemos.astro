@@ -71,28 +71,73 @@ const features = [
 
 const equipment = [
   {
-    name: 'Máquinas de Limpieza en Seco',
-    description: 'Nuestras máquinas de limpieza en seco eliminan eficazmente las partículas en suspensión y reducen los alérgenos, ideal para personas con alergias o problemas respiratorios.',
-    image: 'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=60',
+    name: 'Aspiradoras Industriales',
+    description: 'Utilizamos aspiradoras industriales de alta potencia que capturan hasta el 99.97% de partículas, mejorando significativamente la calidad del aire.',
+    image: '/images/industrial-vacuum-cleaner.jpg',
     url: 'https://www.karcher.com/int/home-garden/vacuum-cleaners/dry-vacuum-cleaner.html'
   },
   {
-    name: 'Aspiradoras HEPA',
-    description: 'Utilizamos aspiradoras con filtros HEPA que capturan hasta el 99.97% de partículas, mejorando significativamente la calidad del aire.',
-    image: 'https://images.unsplash.com/photo-1598032890583-9e7bf51b3e5a?auto=format&fit=crop&w=800&q=60',
-    url: 'https://www.dyson.com/vacuum-cleaners'
-  },
-  {
-    name: 'Limpiadores a Vapor',
+    name: 'Limpiadores a Vapor Profesionales',
     description: 'Nuestros equipos de vapor de alta temperatura desinfectan superficies sin necesidad de productos químicos agresivos.',
-    image: 'https://images.unsplash.com/photo-1589919247162-e2b709442fe9?auto=format&fit=crop&w=800&q=60',
+    image: '/images/karcher-steam-cleaner.jpg',
     url: 'https://www.karcher.com/int/home-garden/steam-cleaners.html'
   },
   {
-    name: 'Equipos de Ultrasonido',
-    description: 'Utilizamos tecnología de ultrasonido para la limpieza de objetos delicados y de difícil acceso.',
-    image: 'https://images.unsplash.com/photo-1590490360181-7aa9c0c0fb29?auto=format&fit=crop&w=800&q=60',
-    url: 'https://www.crest-ultrasonics.com/ultrasonic-cleaners/'
+    name: 'Sistemas de Filtración Avanzada',
+    description: 'Equipos con sistemas de filtración avanzada que eliminan eficazmente las partículas en suspensión y reducen los alérgenos.',
+    image: '/images/advanced-filtration-system.jpg',
+    url: 'https://www.dyson.com/vacuum-cleaners'
+  },
+  {
+    name: 'Pulidoras de Pisos Profesionales',
+    description: 'Máquinas especializadas para el pulido y restauración de pisos, garantizando acabados profesionales.',
+    image: '/images/professional-floor-polisher.jpg',
+    url: 'https://www.karcher.com/int/professional/floor-care.html'
+  },
+  {
+    name: 'Herramientas Especializadas',
+    description: 'Contamos con un amplio arsenal de herramientas especializadas para cada tipo de superficie y necesidad específica.',
+    image: '/images/specialized-cleaning-tools.jpg',
+    url: '#'
+  },
+  {
+    name: 'Equipos de Limpieza de Pisos',
+    description: 'Mapeadoras a vapor y equipos especializados para la limpieza profunda de diferentes tipos de pisos.',
+    image: '/images/steam-mop-floor-cleaner.jpg',
+    url: '#'
+  }
+];
+
+const serviceGallery = [
+  {
+    name: 'Limpieza de Alfombras Profesional',
+    description: 'Limpieza profunda de alfombras con equipos especializados para eliminar manchas, ácaros y olores.',
+    image: '/images/carpet_clean1.jpeg'
+  },
+  {
+    name: 'Limpieza de Colchones',
+    description: 'Eliminación completa de ácaros, bacterias y malos olores con vapor de alta temperatura.',
+    image: '/images/mattress_clean.jpeg'
+  },
+  {
+    name: 'Limpieza de Tapices y Muebles',
+    description: 'Restauración y limpieza especializada para muebles tapizados preservando los materiales.',
+    image: '/images/tapestry_clean.jpeg'
+  },
+  {
+    name: 'Limpieza Profunda de Cocinas',
+    description: 'Desengrase profundo y desinfección completa de cocinas residenciales y comerciales.',
+    image: '/images/kitchen_clean.jpeg'
+  },
+  {
+    name: 'Limpieza de Baños Especializados',
+    description: 'Desinfección profunda y eliminación de sarro, moho y bacterias en sanitarios.',
+    image: '/images/bathroom_clean.jpeg'
+  },
+  {
+    name: 'Equipo de Trabajo Profesional',
+    description: 'Nuestro equipo capacitado utiliza EPP completo y sigue estrictos protocolos de calidad.',
+    image: '/images/team_clean.jpeg'
   }
 ];
 ---
@@ -189,6 +234,51 @@ const equipment = [
                     Más información
                     <span class="ml-2 transition-transform duration-300">→</span>
                   </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Gallery Section -->
+    <section class="py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-2xl lg:text-4xl font-bold text-center mb-6"
+          data-aos="fade-up"
+        >
+          NUESTROS SERVICIOS EN ACCIÓN
+        </h2>
+        <p
+          class="text-gray-600 text-center max-w-3xl mx-auto mb-12 lg:text-lg"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Cada servicio es ejecutado con la máxima profesionalidad y atención al detalle. Conoce algunos de nuestros trabajos especializados.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            serviceGallery.map((service, index) => (
+              <div
+                class="bg-white rounded-lg shadow-md overflow-hidden"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div class="relative h-48">
+                  <img
+                    src={service.image}
+                    alt={service.name}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-semibold mb-3 text-brand">
+                    {service.name}
+                  </h3>
+                  <p class="text-gray-600 text-sm">{service.description}</p>
                 </div>
               </div>
             ))
