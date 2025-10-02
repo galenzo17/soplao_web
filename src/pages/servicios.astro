@@ -8,18 +8,39 @@ import type { Service } from '../types/pricing.js';
 // Main services with city-specific pricing
 const services: Service[] = [
   {
-    title: "Limpieza Convencional/Mantenimiento",
-    description: "Limpieza general de espacios habitados, ideal para mantener tu hogar u oficina en óptimas condiciones.",
+    title: "Limpieza Básica/Convencional Soplao",
+    description: "La forma más práctica de mantener tu hogar u oficina limpia día a día: así de rápido dejamos todo… Soplao.",
     image: "/images/living_clean.jpeg",
     prices: mainServicesPricing.conventional,
-    direction: 'left'
+    direction: 'left',
+    includes: [
+      "Aspirado o trapeado de pisos, según la superficie.",
+      "Retiro de polvo y suciedad ligera en muebles y superficies.",
+      "Orden general de espacios (sin mover objetos pesados).",
+      "Limpieza esencial de baños: lavamanos, inodoro, piso, espejos y ducha.",
+      "En la cocina: limpieza práctica de superficies, lavaplatos y electrodomésticos."
+    ],
+    extras: [
+      "Limpieza profunda de microondas u horno, (no incluye campana) con máquinas de última tecnología a vapor que no usan químicos, logrando desengrasar y sanitizar en profundidad.",
+      "Aspirado de sillones o alfombras, para un ambiente aún más acogedor."
+    ]
   },
   {
-    title: "Limpieza Profunda",
-    description: "Limpieza exhaustiva que incluye espacios de difícil acceso, ideal para reorganización o eventos especiales.",
+    title: "Limpieza Profunda Soplao",
+    description: "Cuando una limpieza básica no basta. Nuestro aseo profundo elimina grasa, bacterias y suciedad difícil, con máquinas de última tecnología a vapor, sin químicos. Así de rápido lo dejamos Soplao.",
     image: "/images/WhatsApp Image 2025-08-04 at 12.18.30 AM(4).jpeg",
     prices: mainServicesPricing.deepCleaning,
-    direction: 'right'
+    direction: 'right',
+    includes: [
+      "Baños: sanitización integral de azulejos, ducha, lavamanos, inodoro, espejos y piso.",
+      "Cocina y electrodomésticos: desengrase completo de superficies, lavaplatos, cocina, campana y electrodomésticos.",
+      "Pisos: desinfección total en cada ambiente.",
+      "Muebles y superficies: aseo minucioso en zonas de contacto frecuente."
+    ],
+    extras: [
+      "Limpieza detallada de puertas y manillas.",
+      "Limpieza de terrazas o balcones (pisos exteriores y barandas)."
+    ]
   },
   {
     title: "Limpieza Fin de Arriendo",
@@ -294,7 +315,7 @@ const specializedServices: Service[] = [
               <tr>
                 <th class="px-4 py-2 border">Metros cuadrados</th>
                 <th class="px-4 py-2 border">Máximo de habitaciones</th>
-                <th class="px-4 py-2 border">Convencional/Mantenimiento</th>
+                <th class="px-4 py-2 border">Básica/Convencional</th>
                 <th class="px-4 py-2 border">Profunda</th>
               </tr>
             </thead>
@@ -302,20 +323,20 @@ const specializedServices: Service[] = [
               <tr>
                 <td class="px-4 py-2 border">Hasta 50 m²</td>
                 <td class="px-4 py-2 border">2 dorm 2 baños</td>
-                <td class="px-4 py-2 border">$ 62.000</td>
-                <td class="px-4 py-2 border">$ 80.000</td>
+                <td class="px-4 py-2 border">Desde $ 62.000</td>
+                <td class="px-4 py-2 border">Desde $ 80.000</td>
               </tr>
               <tr>
                 <td class="px-4 py-2 border">Hasta 100 m²</td>
                 <td class="px-4 py-2 border">3 dorm y 2 baños</td>
-                <td class="px-4 py-2 border">$ 85.000</td>
-                <td class="px-4 py-2 border">$ 115.000</td>
+                <td class="px-4 py-2 border">Desde $ 85.000</td>
+                <td class="px-4 py-2 border">Desde $ 115.000</td>
               </tr>
               <tr>
                 <td class="px-4 py-2 border">Desde 100 m² en adelante</td>
                 <td class="px-4 py-2 border">-</td>
-                <td class="px-4 py-2 border">$ 120.000</td>
-                <td class="px-4 py-2 border">$ 156.000</td>
+                <td class="px-4 py-2 border">Desde $ 120.000</td>
+                <td class="px-4 py-2 border">Desde $ 156.000</td>
               </tr>
             </tbody>
           </table>
