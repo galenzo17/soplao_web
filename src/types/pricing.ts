@@ -26,6 +26,8 @@ export interface Service {
   image: string;
   prices: ServicePrices;
   direction?: 'left' | 'right';
+  includes?: string[];
+  extras?: string[];
 }
 
 // Type guard to check if prices use city-based structure

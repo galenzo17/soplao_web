@@ -5,15 +5,15 @@ import { createCityPricing, applyPriceAdjustment } from '../types/pricing.js';
 // Base prices for Santiago (used as reference)
 export const basePrices = {
   conventional: [
-    { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 62.000" },
-    { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 85.000" },
-    { label: "Desde 100m² en adelante", price: "$ 120.000" }
+    { label: "Hasta 50m² (2 dorm, 2 baños)", price: "Desde $ 62.000" },
+    { label: "Hasta 100m² (3 dorm, 2 baños)", price: "Desde $ 85.000" },
+    { label: "Desde 100m² en adelante", price: "Desde $ 120.000" }
   ] as PriceItem[],
-  
+
   deepCleaning: [
-    { label: "Hasta 50m² (2 dorm, 2 baños)", price: "$ 80.000" },
-    { label: "Hasta 100m² (3 dorm, 2 baños)", price: "$ 115.000" },
-    { label: "Desde 100m² en adelante", price: "$ 156.000" }
+    { label: "Hasta 50m² (2 dorm, 2 baños)", price: "Desde $ 80.000" },
+    { label: "Hasta 100m² (3 dorm, 2 baños)", price: "Desde $ 115.000" },
+    { label: "Desde 100m² en adelante", price: "Desde $ 156.000" }
   ] as PriceItem[],
   
   endOfRent: [
