@@ -24,10 +24,7 @@ export const basePrices = {
 // Specialized services base prices
 export const specializedBasePrices = {
   carpetCleaning: [
-    { label: "Hasta 10 m²", price: "$ 35.000" },
-    { label: "10-30 m²", price: "$ 65.000" },
-    { label: "30-50 m²", price: "$ 95.000" },
-    { label: "Más de 50 m²", price: "$ 1.800 x m²" }
+    { label: "Cotización Personalizada", price: "Cotizar" }
   ] as PriceItem[],
   
   tapestryUpholstery: [
@@ -38,10 +35,7 @@ export const specializedBasePrices = {
   ] as PriceItem[],
   
   mattressCleaning: [
-    { label: "Individual (1 plaza)", price: "$ 20.000" },
-    { label: "Matrimonial (2 plazas)", price: "$ 30.000" },
-    { label: "Queen/King size", price: "$ 40.000" },
-    { label: "Box spring completo", price: "$ 55.000" }
+    { label: "Cotización Personalizada", price: "Cotizar" }
   ] as PriceItem[],
   
   kitchenCleaning: [
@@ -59,10 +53,7 @@ export const specializedBasePrices = {
   ] as PriceItem[],
   
   floorRestoration: [
-    { label: "Parquet/madera 10-30 m²", price: "$ 45.000" },
-    { label: "Parquet/madera 30-60 m²", price: "$ 80.000" },
-    { label: "Mármol/granito por m²", price: "$ 2.500" },
-    { label: "Cerámico/porcelanato por m²", price: "$ 1.800" }
+    { label: "Cotización Personalizada", price: "Cotizar" }
   ] as PriceItem[],
   
   bathroomCleaning: [
@@ -73,10 +64,7 @@ export const specializedBasePrices = {
   ] as PriceItem[],
   
   windowCleaning: [
-    { label: "Hasta 10 ventanas", price: "$ 25.000" },
-    { label: "10-20 ventanas", price: "$ 40.000" },
-    { label: "20-40 ventanas", price: "$ 65.000" },
-    { label: "Edificio comercial", price: "$ 2.000 x ventana" }
+    { label: "Cotización Personalizada", price: "Cotizar" }
   ] as PriceItem[],
   
   wallCleaning: [
