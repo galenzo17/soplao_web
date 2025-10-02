@@ -1,5 +1,5 @@
-// City store for managing selected city state across the application
-export type City = 'santiago' | 'pucon';
+// City store for managing city state (Santiago only)
+export type City = 'santiago';
 
 export interface CityData {
   name: string;
@@ -10,10 +10,6 @@ export const CITIES: Record<City, CityData> = {
   santiago: {
     name: 'santiago',
     displayName: 'Santiago'
-  },
-  pucon: {
-    name: 'pucon',
-    displayName: 'Pucón'
   }
 };
 
@@ -62,7 +58,7 @@ class CityStore {
   }
 
   private isValidCity(city: string): boolean {
-    return city === 'santiago' || city === 'pucon';
+    return city === 'santiago';
   }
 
   private notifyListeners(): void {

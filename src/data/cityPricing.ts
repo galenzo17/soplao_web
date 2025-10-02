@@ -75,97 +75,85 @@ export const specializedBasePrices = {
   ] as PriceItem[]
 };
 
-// Price adjustments by city
+// Price adjustments by city (Santiago only)
 export const cityAdjustments: Record<string, PriceAdjustment> = {
   santiago: {
     // Santiago uses base prices (no adjustment)
-  },
-  pucon: {
-    // Pucón prices are generally 20% higher due to location and travel costs
-    multiplier: 1.20,
-    // Some custom adjustments for specific services
-    customPrices: undefined // Will be overridden per service if needed
   }
 };
 
-// Generate city-specific pricing for main services
+// Generate city-specific pricing for main services (Santiago only)
 export const mainServicesPricing = {
   conventional: createCityPricing(
     basePrices.conventional,
-    applyPriceAdjustment(basePrices.conventional, cityAdjustments.pucon)
+    basePrices.conventional
   ),
-  
+
   deepCleaning: createCityPricing(
     basePrices.deepCleaning,
-    applyPriceAdjustment(basePrices.deepCleaning, cityAdjustments.pucon)
+    basePrices.deepCleaning
   ),
-  
+
   endOfRent: createCityPricing(
     basePrices.endOfRent,
-    [{ label: "Cotización Personalizada", price: "Solicitar Presupuesto + Traslado" }]
+    basePrices.endOfRent
   )
 };
 
-// Generate city-specific pricing for specialized services
+// Generate city-specific pricing for specialized services (Santiago only)
 export const specializedServicesPricing = {
   carpetCleaning: createCityPricing(
     specializedBasePrices.carpetCleaning,
-    applyPriceAdjustment(specializedBasePrices.carpetCleaning, cityAdjustments.pucon)
+    specializedBasePrices.carpetCleaning
   ),
-  
+
   tapestryUpholstery: createCityPricing(
     specializedBasePrices.tapestryUpholstery,
-    applyPriceAdjustment(specializedBasePrices.tapestryUpholstery, cityAdjustments.pucon)
+    specializedBasePrices.tapestryUpholstery
   ),
-  
+
   mattressCleaning: createCityPricing(
     specializedBasePrices.mattressCleaning,
-    applyPriceAdjustment(specializedBasePrices.mattressCleaning, cityAdjustments.pucon)
+    specializedBasePrices.mattressCleaning
   ),
-  
+
   kitchenCleaning: createCityPricing(
     specializedBasePrices.kitchenCleaning,
-    applyPriceAdjustment(specializedBasePrices.kitchenCleaning, cityAdjustments.pucon)
+    specializedBasePrices.kitchenCleaning
   ),
-  
+
   industrialKitchen: createCityPricing(
     specializedBasePrices.industrialKitchen,
-    applyPriceAdjustment(specializedBasePrices.industrialKitchen, cityAdjustments.pucon)
+    specializedBasePrices.industrialKitchen
   ),
-  
+
   floorRestoration: createCityPricing(
     specializedBasePrices.floorRestoration,
-    applyPriceAdjustment(specializedBasePrices.floorRestoration, cityAdjustments.pucon)
+    specializedBasePrices.floorRestoration
   ),
-  
+
   bathroomCleaning: createCityPricing(
     specializedBasePrices.bathroomCleaning,
-    applyPriceAdjustment(specializedBasePrices.bathroomCleaning, cityAdjustments.pucon)
+    specializedBasePrices.bathroomCleaning
   ),
-  
+
   windowCleaning: createCityPricing(
     specializedBasePrices.windowCleaning,
-    applyPriceAdjustment(specializedBasePrices.windowCleaning, cityAdjustments.pucon)
+    specializedBasePrices.windowCleaning
   ),
-  
+
   wallCleaning: createCityPricing(
     specializedBasePrices.wallCleaning,
-    applyPriceAdjustment(specializedBasePrices.wallCleaning, cityAdjustments.pucon)
+    specializedBasePrices.wallCleaning
   )
 };
 
-// City-specific information
+// City-specific information (Santiago only)
 export const cityInfo = {
   santiago: {
     name: 'Santiago',
     displayName: 'Santiago',
     coverage: 'Región Metropolitana',
     additionalInfo: 'Sin costo adicional de traslado'
-  },
-  pucon: {
-    name: 'pucon',
-    displayName: 'Pucón',
-    coverage: 'Pucón y alrededores',
-    additionalInfo: 'Incluye costo de traslado desde Santiago'
   }
 } as const;

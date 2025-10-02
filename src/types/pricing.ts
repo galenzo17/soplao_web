@@ -7,10 +7,9 @@ export interface PriceItem {
   price: string;
 }
 
-// City-specific pricing structure
+// City-specific pricing structure (Santiago only)
 export interface CityPricing {
   santiago: PriceItem[];
-  pucon: PriceItem[];
 }
 
 // Legacy price structure for backward compatibility
@@ -32,10 +31,9 @@ export interface Service {
 
 // Type guard to check if prices use city-based structure
 export function isCityPricing(prices: ServicePrices): prices is CityPricing {
-  return typeof prices === 'object' && 
-         !Array.isArray(prices) && 
-         'santiago' in prices && 
-         'pucon' in prices;
+  return typeof prices === 'object' &&
+         !Array.isArray(prices) &&
+         'santiago' in prices;
 }
 
 // Type guard to check if prices use legacy structure
@@ -53,14 +51,13 @@ export function getPricesForCity(prices: ServicePrices, city: City): PriceItem[]
   return prices;
 }
 
-// Utility function to create city-specific pricing
+// Utility function to create city-specific pricing (Santiago only)
 export function createCityPricing(
   santiagoprices: PriceItem[],
-  puconPrices: PriceItem[]
+  _puconPrices?: PriceItem[]  // Keep for backward compatibility but unused
 ): CityPricing {
   return {
-    santiago: santiagoprices,
-    pucon: puconPrices
+    santiago: santiagoprices
   };
 }
 
