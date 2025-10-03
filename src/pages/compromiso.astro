@@ -4,12 +4,102 @@ import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
 ---
 
-<Layout title="soplao.cl - Compromiso Medioambiental">
+<Layout title="soplao.cl - Compromiso">
   <section class="bg-gray-100 w-full min-h-screen py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4">
       <h1 class="text-2xl lg:text-4xl font-bold text-center mb-8 lg:mb-12" data-aos="fade-up">
-        COMPROMISO MEDIOAMBIENTAL
+        COMPROMISO
       </h1>
+
+      <!-- Visión Section -->
+      <div class="mb-12 bg-gradient-to-r from-brand to-brand-light rounded-lg shadow-lg p-8" data-aos="fade-up">
+        <h2 class="text-2xl lg:text-3xl font-bold text-center mb-6 text-white">
+          Visión
+        </h2>
+        <p class="text-white text-center text-lg max-w-4xl mx-auto">
+          En Soplao queremos llevar nuestra experiencia de limpieza a cada rincón de Chile, con un servicio rápido, confiable y respetuoso con el medio ambiente, para que los hogares siempre disfruten de tranquilidad y bienestar.
+        </p>
+      </div>
+
+      <!-- Valores Section -->
+      <div class="mb-12" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+          Valores Soplao
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Valor 1: Confianza -->
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-center mb-3 text-brand">Confianza</h3>
+            <p class="text-gray-600 text-center">
+              Contamos con personas de confianza que cuidan tu hogar, porque tu tranquilidad es lo más importante.
+            </p>
+          </div>
+
+          <!-- Valor 2: Respeto por el hogar -->
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-center mb-3 text-brand">Respeto por el hogar</h3>
+            <p class="text-gray-600 text-center">
+              Tratamos cada casa o departamento como si fuera nuestro, cuidando cada detalle en el proceso de limpieza.
+            </p>
+          </div>
+
+          <!-- Valor 3: Calidad y rapidez -->
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-center mb-3 text-brand">Calidad y rapidez</h3>
+            <p class="text-gray-600 text-center">
+              Trabajamos con eficiencia y cuidado, para que tu hogar quede Soplao y tú disfrutes la tranquilidad de un servicio bien hecho.
+            </p>
+          </div>
+
+          <!-- Valor 4: Bienestar y medio ambiente -->
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-center mb-3 text-brand">Bienestar y medio ambiente</h3>
+            <p class="text-gray-600 text-center">
+              Usamos tecnología y métodos amigables con las personas y el planeta, porque limpiar también es cuidar.
+            </p>
+          </div>
+
+          <!-- Valor 5: Mejora continua -->
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-center mb-3 text-brand">Mejora continua</h3>
+            <p class="text-gray-600 text-center">
+              Siempre buscamos nuevas formas de entregar un servicio mejor, escuchando a quienes confían en nosotros.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compromiso Medioambiental Section -->
+      <div class="mb-8" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+          Compromiso Medioambiental
+        </h2>
+      </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card 1: Productos Ecológicos -->
