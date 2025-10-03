@@ -14,9 +14,8 @@ interface Props {
 
 const { title, description, prices, image, direction, includes, extras } = Astro.props;
 
-// Get default prices for server-side rendering (Santiago by default)
-const santiagoprices = getPricesForCity(prices, 'santiago');
-const puconPrices = getPricesForCity(prices, 'pucon');
+// Get prices for Santiago (only city available)
+const servicePrices = getPricesForCity(prices, 'santiago');
 ---
 <div
   class="w-full lg:w-1/2"
@@ -62,85 +61,22 @@ const puconPrices = getPricesForCity(prices, 'pucon');
         </div>
       )}
 
-      <div class="city-pricing-container">
-        <!-- City indicator -->
-        <div class="city-indicator mb-3 text-center">
-          <span class="current-city-name text-sm text-gray-500 font-medium">Santiago</span>
-        </div>
-        
+      <div class="pricing-container">
         <!-- Price display -->
         <div class="pricing-display flex flex-col items-center space-y-1 lg:space-y-2">
-          <!-- Santiago prices (default visible) -->
-          <div class="city-prices" data-city="santiago">
-            {santiagoprices.map(item => (
-              <div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
-                <span class="font-medium text-right min-w-[100px]">{item.label}</span>
-                <span>:</span>
-                <span class="service-price font-bold min-w-[80px] text-left">{item.price}</span>
-              </div>
-            ))}
-          </div>
-          
-          <!-- Pucón prices (hidden by default) -->
-          <div class="city-prices hidden" data-city="pucon">
-            {puconPrices.map(item => (
-              <div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
-                <span class="font-medium text-right min-w-[100px]">{item.label}</span>
-                <span>:</span>
-                <span class="service-price font-bold min-w-[80px] text-left">{item.price}</span>
-              </div>
-            ))}
-          </div>
+          {servicePrices.map(item => (
+            <div class="w-full flex justify-center items-center space-x-4 text-sm lg:text-base">
+              <span class="font-medium text-right min-w-[100px]">{item.label}</span>
+              <span>:</span>
+              <span class="service-price font-bold min-w-[80px] text-left">{item.price}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script define:vars={{ title }}>
-  // Simple city change handler without imports
-  function updateServiceCardPrices() {
-    const containers = document.querySelectorAll('.city-pricing-container');
-    containers.forEach(container => {
-      const serviceTitle = container.closest('.service-card')?.querySelector('.service-title')?.textContent;
-      if (serviceTitle === title) {
-        handleCityChange(container);
-      }
-    });
-  }
-
-  function handleCityChange(container) {
-    // Listen for city change events
-    document.addEventListener('citychange', (e) => {
-      const currentCity = e.detail.city;
-      const cityNameElement = container.querySelector('.current-city-name');
-      const cityContainers = container.querySelectorAll('.city-prices');
-
-      // Update city name indicator
-      if (cityNameElement) {
-        cityNameElement.textContent = currentCity === 'santiago' ? 'Santiago' : 'Pucón';
-      }
-
-      // Show/hide appropriate price container
-      cityContainers.forEach(priceContainer => {
-        const containerCity = priceContainer.dataset.city;
-        
-        if (containerCity === currentCity) {
-          priceContainer.classList.remove('hidden');
-        } else {
-          priceContainer.classList.add('hidden');
-        }
-      });
-    });
-  }
-
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateServiceCardPrices);
-  } else {
-    updateServiceCardPrices();
-  }
-</script>
 
 <style>
   :root {
@@ -175,27 +111,7 @@ const puconPrices = getPricesForCity(prices, 'pucon');
     transform: scale(1.05);
   }
 
-  .city-indicator {
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 0.5rem;
-  }
-
-  .current-city-name {
-    color: var(--color-primary);
-    font-weight: 500;
-  }
-
-  .current-city-name::before {
-    content: "📍 ";
-    font-size: 0.875rem;
-  }
-
-  .pricing-display .city-prices {
-    transition: opacity 0.3s ease;
+  .pricing-display {
     width: 100%;
-  }
-
-  .pricing-display .city-prices.hidden {
-    display: none;
   }
 </style>
