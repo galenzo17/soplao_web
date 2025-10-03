@@ -2,7 +2,6 @@
 // src/pages/contacto.astro
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
-import Questionnaire from './questionnaire.astro';
 
 const socialLinks = [
   {
@@ -166,21 +165,9 @@ const services = [
           </button>
         </form>
       </div>
-      
-      <!-- Cuestionario -->
-      <div
-        class="bg-white rounded-lg shadow-md p-8 mb-12"
-        data-aos="fade-up"
-        data-aos-delay="150"
-      >
-        <h2 class="text-xl font-semibold mb-6 text-center">
-          ¿No estás seguro de qué necesitas? Completa nuestro cuestionario
-        </h2>
-        <Questionnaire />
-      </div>
 
       <!-- Separador -->
-      <div class="text-center mb-8">
+      <div class="text-center mb-8 mt-12">
         <span class="inline-block w-16 h-1 bg-brand rounded-full"></span>
       </div>
 
