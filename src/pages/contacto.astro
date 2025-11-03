@@ -57,7 +57,9 @@ const services = [
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        <form class="space-y-6">
+        <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+          <input type="hidden" name="form-name" value="contact" />
+
           <div>
             <label
               for="nombre"
