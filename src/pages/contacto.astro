@@ -173,12 +173,16 @@ const services = [
 
           <button
             type="submit"
+            id="submit-btn"
             class="w-full bg-brand text-white font-semibold py-3 px-6 rounded-md hover:bg-brand/90 transition-colors duration-200"
           >
             Enviar Mensaje
           </button>
         </form>
       </div>
+
+      <!-- Canvas para partículas -->
+      <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
 
       <!-- Separador -->
       <div class="text-center mb-8 mt-12">
@@ -215,13 +219,114 @@ const services = [
   </main>
 </Layout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('particles-canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (!canvas || !ctx || !submitBtn) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      color: string;
+      life: number;
+      maxLife: number;
+
+      constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+        this.vx = (Math.random() - 0.5) * 8;
+        this.vy = (Math.random() - 0.5) * 8 - 2;
+        this.size = Math.random() * 6 + 3;
+
+        const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+
+        this.life = 0;
+        this.maxLife = 100;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.15;
+        this.life++;
+      }
+
+      draw(ctx: CanvasRenderingContext2D) {
+        const opacity = 1 - (this.life / this.maxLife);
+        ctx.globalAlpha = opacity;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      isDead() {
+        return this.life >= this.maxLife;
+      }
+    }
+
+    let particles: Particle[] = [];
+    let animationId: number | null = null;
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles = particles.filter(p => !p.isDead());
+
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw(ctx);
+      });
+
+      if (particles.length > 0) {
+        animationId = requestAnimationFrame(animate);
+      } else {
+        animationId = null;
+      }
+    }
+
+    function createParticles(x: number, y: number) {
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle(x, y));
+      }
+
+      if (!animationId) {
+        animate();
+      }
+    }
+
+    submitBtn.addEventListener('click', (e) => {
+      const rect = submitBtn.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      createParticles(x, y);
+    });
+  });
+</script>
+
 <style>
   /* Estilo para el autofill de inputs */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
   textarea:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
     transition: background-color 5000s ease-in-out 0s;
